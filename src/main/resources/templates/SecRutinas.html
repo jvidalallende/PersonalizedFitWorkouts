@@ -11,21 +11,22 @@
 <div class="container">
     {{#Rutinas}}
     <div>
+        <span> {{descripcion}}</span>
         <table class="table table-striped">
             <tr>
                 <th>#</th>
-                <th>velascogculebras.personalizedfitworkouts.Entities.Ejercicio</th>
+                <th>Ejercicio</th>
                 <th>Series</th>
                 <th>Repeticiones</th>
             </tr>
-            {{#velascogculebras.personalizedfitworkouts.Entities.Ejercicio}}
+            {{#ejercicios}}
             <tr>
                 <th>{{-index}}</th>
-                <th>{{..nombre}}</th>
-                <th>{{..series}}</th>
-                <th>{{..repeticiones}}</th>
+                <th>{{nombre}}</th>
+                <th>{{series}}</th>
+                <th>{{repeticiones}}</th>
             </tr>
-            {{/velascogculebras.personalizedfitworkouts.Entities.Ejercicio}}
+            {{/ejercicios}}
         </table>
     </div>
     {{/Rutinas}}

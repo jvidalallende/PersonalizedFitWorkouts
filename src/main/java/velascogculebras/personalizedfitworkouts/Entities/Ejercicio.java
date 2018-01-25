@@ -12,12 +12,12 @@ public class Ejercicio {
     private long id;
     private String nombre;
     private int series;
-    private String repeticions;
+    private String repeticiones;
 
     public Ejercicio(String nombre, int series, String repeticions) {
         this.nombre = nombre;
         this.series = series;
-        this.repeticions = repeticions;
+        this.repeticiones = repeticions;
     }
 
     public Ejercicio() {
@@ -37,7 +37,7 @@ public class Ejercicio {
         return series;
     }
 
-    public String getRepeticions() {
-        return repeticions;
+    public String getRepeticiones() {
+        return repeticiones;
     }
 }

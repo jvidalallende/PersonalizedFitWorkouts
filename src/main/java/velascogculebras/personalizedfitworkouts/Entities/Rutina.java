@@ -8,8 +8,18 @@ public class Rutina {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @OneToMany
+
+    private String descripcion;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Ejercicio> ejercicios;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public Rutina() {
     }
