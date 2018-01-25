@@ -14,7 +14,7 @@ La web a implementar trata de acercar al usuario a planes de entrenamiento a tra
 - Usuario: Usuario básico que podrá visualizar , valorar , comentar y añadir a sus favoritos las rutinas , además podría contactar con un entrenador para obtener rutinas personalizadas(privada).
 - Entrenador: Usuario con capacidad de creación y compartición de rutinas, además puede comunicarse con los usuarios normales.
 - Favorito: Rutinas marcadas como favoritas para cada usuario en particular.
-- Rutina: Rutina de entrenamiento que se clasifica en; rutinas generales y rutinas específicas para un usuario.
+- velascogculebras.personalizedfitworkouts.Entities.Rutina: velascogculebras.personalizedfitworkouts.Entities.Rutina de entrenamiento que se clasifica en; rutinas generales y rutinas específicas para un usuario.
 - Valoración/Comentario: Valoracion/comentario que se podrá poner a las rutinas o a los entrenadores.
 
 ## Servicio Interno
