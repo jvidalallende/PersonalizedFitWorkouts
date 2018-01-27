@@ -5,6 +5,7 @@
     <title>PFW: Rutinas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/Material.css">
 
 
 </head>
@@ -52,35 +53,40 @@
 
 
     {{#Rutinas}}
-    <div>
-        <img
-        <span>{{nombre}}</span>
-        <table class="table table-bordered table-condensed">
-            <tr>
-                <th><p class="text-center">#</p></th>
-                <th><p class="text-center">Ejercicio</p></th>
-                <th><p class="text-center">Series</p></th>
-                <th><p class="text-center">Repeticiones</p></th>
-            </tr>
-            {{#ejercicios}}
-            <tr>
-                <th><p class="text-center">{{-index}}</p></th>
-                <th><p class="text-center">{{nombre}}</p></th>
-                <th><p class="text-center">{{series}}</p></th>
-                <th><p class="text-center">{{repeticiones}}</p></th>
-            </tr>
-            {{/ejercicios}}
-        </table>
-        <strong>Categorias</strong>
-        {{#categorias}}
-        <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
-        {{/categorias}}
-        <br>
+    <div class="card card-1">
+        <div class="autorHeader">
+            <img src="../images/sony_logo20.png" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
+            <span class="autorName">nombre</span>
+        </div>
+        <div>
+            <span>{{nombre}}</span>
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <th><p class="text-center">#</p></th>
+                    <th><p class="text-center">Ejercicio</p></th>
+                    <th><p class="text-center">Series</p></th>
+                    <th><p class="text-center">Repeticiones</p></th>
+                </tr>
+                {{#ejercicios}}
+                <tr>
+                    <th><p class="text-center">{{-index}}</p></th>
+                    <th><p class="text-center">{{nombre}}</p></th>
+                    <th><p class="text-center">{{series}}</p></th>
+                    <th><p class="text-center">{{repeticiones}}</p></th>
+                </tr>
+                {{/ejercicios}}
+            </table>
+            <strong>Categorias:</strong>
+            {{#categorias}}
+            <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
+            {{/categorias}}
+            <br>
 
-        <span>{{descripcion}}</span>
+            <span>{{descripcion}}</span>
+        </div>
     </div>
+    <hr>
     {{/Rutinas}}
-
 </div>
 
 
