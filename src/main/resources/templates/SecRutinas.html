@@ -6,28 +6,78 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+
 </head>
 <body>
 <div class="container">
+    <h1> Personalized Fit Workouts
+        <small> PFW</small>
+    </h1>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- El logotipo y el icono que despliega el menú se agrupan
+             para mostrarlos mejor en los dispositivos móviles -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Desplegar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">PFW</a>
+        </div>
+
+        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+             otro elemento que se pueda ocultar al minimizar la barra -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Inicio</a></li>
+                <li><a href="#">Entrenadores</a></li>
+
+            </ul>
+
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscar">
+                </div>
+                <button type="submit" class="btn btn-default">Enviar</button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">login</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+
     {{#Rutinas}}
     <div>
-        <span> {{descripcion}}</span>
-        <table class="table table-striped">
+        <img
+        <span>{{nombre}}</span>
+        <table class="table table-bordered table-condensed">
             <tr>
-                <th>#</th>
-                <th>Ejercicio</th>
-                <th>Series</th>
-                <th>Repeticiones</th>
+                <th><p class="text-center">#</p></th>
+                <th><p class="text-center">Ejercicio</p></th>
+                <th><p class="text-center">Series</p></th>
+                <th><p class="text-center">Repeticiones</p></th>
             </tr>
             {{#ejercicios}}
             <tr>
-                <th>{{-index}}</th>
-                <th>{{nombre}}</th>
-                <th>{{series}}</th>
-                <th>{{repeticiones}}</th>
+                <th><p class="text-center">{{-index}}</p></th>
+                <th><p class="text-center">{{nombre}}</p></th>
+                <th><p class="text-center">{{series}}</p></th>
+                <th><p class="text-center">{{repeticiones}}</p></th>
             </tr>
             {{/ejercicios}}
         </table>
+        <strong>Categorias</strong>
+        {{#categorias}}
+        <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
+        {{/categorias}}
+        <br>
+
+        <span>{{descripcion}}</span>
     </div>
     {{/Rutinas}}
 
