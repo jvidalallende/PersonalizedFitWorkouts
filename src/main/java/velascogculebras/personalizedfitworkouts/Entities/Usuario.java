@@ -7,24 +7,28 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private boolean userOrTrainer;
+    private String mail;
+    private String name;
+    private String password;
     @OneToMany
-    private List<Rutina> rutinas;
+    private List<Rutina> rutinasFav;
+
+
 
     public Usuario() {
     }
 
-    public Usuario(List<Rutina> rutina) {
-        this.rutinas = rutina;
+
+
+    public List<Rutina> getRutinasFav() {
+        return rutinasFav;
     }
 
     public long getId() {
         return id;
     }
 
-    public List<Rutina> getRutina() {
-        return rutinas;
-    }
+
 }
 
 
