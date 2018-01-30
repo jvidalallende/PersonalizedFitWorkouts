@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import velascogculebras.personalizedfitworkouts.Entities.Categoria;
 import velascogculebras.personalizedfitworkouts.Entities.Ejercicio;
+import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
 import velascogculebras.personalizedfitworkouts.Repositories.CategoriaRepository;
+import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +21,8 @@ public class PrincipalController {
     private RutinaRepository rutinaRepository;
     @Autowired
     private CategoriaRepository categoriaRepository;
+    @Autowired
+    private EntrenadorRepository entrenadorRepository;
 
     @PostConstruct
     public void init() {
@@ -43,6 +47,12 @@ public class PrincipalController {
         rutina.setDescripcion("rutina de prueba para poder desarollar el front con datos");
         rutinaRepository.save(rutina);
 
+        Entrenador entrenador = new Entrenador();
+        entrenador.setNombre("Entrenador");
+        entrenador.setProfileIcon("/users/images/1.jpg");
+        entrenadorRepository.save(entrenador);
+
+
         Ejercicio ejercicio1 = new Ejercicio("Zancadas", 4, "10-10-8-6f");
         Ejercicio ejercicio2 = new Ejercicio("Peso Muerto", 5, "5-5-5-5-5f");
         List<Ejercicio> ejercicios1 = new ArrayList<>();
@@ -51,6 +61,10 @@ public class PrincipalController {
         rutina = new Rutina(ejercicios1);
         rutina.setNombre("Test2");
         rutina.setDescripcion("Rutina para probar el for");
+        rutina.setEntrenador(entrenador);
+        entrenador.setRutinas(rutinas);
         rutinaRepository.save(rutina);
+
+
     }
 }
