@@ -2,6 +2,8 @@ package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 import velascogculebras.personalizedfitworkouts.Entities.Categoria;
 import velascogculebras.personalizedfitworkouts.Entities.Ejercicio;
 import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
@@ -67,4 +69,12 @@ public class PrincipalController {
 
 
     }
+
+    @RequestMapping("/")
+    private String getIndex(Model model){
+        model.addAttribute("entrenador",entrenadorRepository.findAll());
+        return "index";
+    }
+
+
 }
