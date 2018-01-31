@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {{#entrenador}}
     <meta charset="UTF-8">
-    <title>PFW: Rutinas</title>
+    <title>{{nombre}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
+    <link rel="stylesheet" href="css/secEntrenador.css">
 </head>
 <body>
 <div class="container">
+
     <h1> Personalized Fit Workouts
         <small> PFW</small>
     </h1>
@@ -51,51 +52,22 @@
     </nav>
 
 
-    {{#Rutinas}}
-    <div class="card card-1">
-        <div class="autorHeader">
-            {{#entrenador}}
-            <a href="secEntrenador?id={{id}}">
-                <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
-            </a>
-            <span class="autorName"> {{nombre}}</span>
-            {{/entrenador}}
-        </div>
-        <div>
-            <span>{{nombre}}</span>
-            <table class="table table-bordered table-condensed">
-                <tr>
-                    <th><p class="text-center">#</p></th>
-                    <th><p class="text-center">Ejercicio</p></th>
-                    <th><p class="text-center">Series</p></th>
-                    <th><p class="text-center">Repeticiones</p></th>
-                </tr>
-                {{#ejercicios}}
-                <tr>
-                    <th><p class="text-center">{{-index}}</p></th>
-                    <th><p class="text-center">{{nombre}}</p></th>
-                    <th><p class="text-center">{{series}}</p></th>
-                    <th><p class="text-center">{{repeticiones}}</p></th>
-                </tr>
-                {{/ejercicios}}
-            </table>
-            <strong>Categorias:</strong>
-            {{#categorias}}
-            <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
-            {{/categorias}}
-            <br>
-
-            <span>{{descripcion}}</span>
+    <div style="display: inline-flex">
+        <img src="{{profileIcon}}" class="img-circle" height="180px" width="180px">
+        <div id="Descripcion">
+            <h3>{{nombre}}</h3>
+            <p>{{biografia}}</p>
         </div>
     </div>
-    <hr>
-    {{/Rutinas}}
+
+
+    {{/entrenador}}
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </div>
 
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
 </body>
 </html>

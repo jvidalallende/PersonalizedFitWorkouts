@@ -8,7 +8,7 @@ public class Entrenador {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    private String biografia;
     private String mail;
     private String nombre;
     private String profileIcon;
@@ -21,6 +21,10 @@ public class Entrenador {
 
     public void setProfileIcon(String profileIcon) {
         this.profileIcon = profileIcon;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
     }
 
     public void setId(long id) {
