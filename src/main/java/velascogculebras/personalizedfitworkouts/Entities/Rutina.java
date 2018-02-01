@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,6 +12,12 @@ public class Rutina {
     private String nombre;
     @ManyToOne
     private Entrenador entrenador;
+
+    private Date date;
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL)

@@ -65,7 +65,11 @@
     {{#Rutinas}}
     <div class="card card-1">
         <div>
-            <span>{{nombre}}</span>
+            <div class="name-header">
+                <strong>{{nombre}}</strong>
+                <small>{{date}}</small>
+            </div>
+
             <table class="table table-bordered table-condensed">
                 <tr>
                     <th><p class="text-center">#</p></th>
@@ -93,7 +97,6 @@
     </div>
     <hr>
     {{/Rutinas}}
-
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"

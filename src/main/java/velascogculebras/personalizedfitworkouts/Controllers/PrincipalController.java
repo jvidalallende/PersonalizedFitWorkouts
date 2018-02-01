@@ -14,6 +14,7 @@ import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -37,6 +38,7 @@ public class PrincipalController {
         ejercicios.add(ejercicio);
         Rutina rutina = new Rutina(ejercicios);
         rutina.setNombre("rutina de prueba");
+        rutina.setDate(new Date());
         Categoria categoria = new Categoria();
         categoria.setNombre("CategoriaPrueba");
         List<Rutina> rutinas = new ArrayList<>();
@@ -66,6 +68,7 @@ public class PrincipalController {
         rutina.setNombre("Test2");
         rutina.setDescripcion("Rutina para probar el for");
         rutina.setEntrenador(entrenador);
+        rutina.setDate(new Date());
         entrenador.setRutinas(rutinas);
         rutinaRepository.save(rutina);
 
