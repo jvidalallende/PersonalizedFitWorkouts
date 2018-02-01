@@ -27,6 +27,10 @@ public class Entrenador {
         this.biografia = biografia;
     }
 
+    public List<Rutina> getRutinas() {
+        return rutinas;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
