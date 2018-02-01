@@ -43,3 +43,8 @@ span.autorName {
     font-weight: bold;
 }
 
+div.name-header {
+    display: flex;
+    justify-content: space-between;
+}
+

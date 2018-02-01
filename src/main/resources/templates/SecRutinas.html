@@ -5,6 +5,7 @@
     <title>PFW: Rutinas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Material.css">
 
 
 </head>
@@ -12,6 +13,7 @@
 <div class="container">
     <h1> Personalized Fit Workouts
         <small> PFW</small>
+
     </h1>
     <nav class="navbar navbar-default" role="navigation">
         <!-- El logotipo y el icono que despliega el menú se agrupan
@@ -24,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PFW</a>
+            <a class="navbar-brand" href="/">PFW</a>
         </div>
 
         <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -62,7 +64,11 @@
             {{/entrenador}}
         </div>
         <div>
-            <span>{{nombre}}</span>
+            <div class="name-header">
+                <strong>{{nombre}}</strong>
+                <small>{{date}}</small>
+            </div>
+
             <table class="table table-bordered table-condensed">
                 <tr>
                     <th><p class="text-center">#</p></th>

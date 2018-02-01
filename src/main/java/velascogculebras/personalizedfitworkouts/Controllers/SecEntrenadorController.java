@@ -16,6 +16,7 @@ public class SecEntrenadorController {
     private String getEntrenador(Model model, long id) {
         Entrenador entrenador = entrenadorRepository.findOne(id);
         model.addAttribute("entrenador", entrenador);
+        model.addAttribute("Rutinas", entrenador.getRutinas());
         return "SecEntrenador";
     }
 
