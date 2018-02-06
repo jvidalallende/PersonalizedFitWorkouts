@@ -14,23 +14,23 @@
 <div class="testbox">
     <h1>Registration</h1>
 
-    <form action="/">
+    <form action="/register">
         <hr>
         <div class="accounttype">
-            <input type="radio" value="None" id="radioOne" name="account" checked/>
-            <label for="radioOne" class="radio" chec>Usuario</label>
-            <input type="radio" value="None" id="radioTwo" name="account" />
+            <input type="radio" value="Usuario" id="radioOne" name="type" checked/>
+            <label for="radioOne" class="radio">Usuario</label>
+            <input type="radio" value="Entrenador" id="radioTwo" name="type"/>
             <label for="radioTwo" class="radio">Entrenador</label>
         </div>
         <hr>
         <label id="icon" for="name"><i class="icon-envelope "></i></label>
-        <input type="text" name="name" id="name" placeholder="Email" required/>
+        <input type="text" name="email" id="name" placeholder="Email" required/>
         <label id="icon" for="name"><i class="icon-user"></i></label>
-        <input type="text" name="name" id="name" placeholder="Name" required/>
+        <input type="text" name="nombre" id="name" placeholder="Name" required/>
         <label id="icon" for="name"><i class="icon-shield"></i></label>
-        <input type="password" name="name" id="name" placeholder="Password" required/>
+        <input type="password" name="password" id="name" placeholder="Password" required/>
         <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
-        <a href="#" class="button">Register</a>
+        <button type="submit" class="btn btn-default">Register</button>
     </form>
 </div>
 

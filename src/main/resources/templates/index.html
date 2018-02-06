@@ -60,7 +60,13 @@
                    <div class="container" >
                        {{#entrenador}}
                        <div class="card card-1">
+                           {{#profileIcon}}
                                 <a href="/secRutinas"> <img src="{{profileIcon}}" width="100" height="100" class="img-circle"></a>
+                           {{/profileIcon}}
+                           {{^profileIcon}}
+                           <a href="/secRutinas"> <img src="images/default-avatar.png" width="100" height="100"
+                                                       class="img-circle"></a>
+                           {{/profileIcon}}
                                 <p class="text-center"> {{nombre}}</p>
                        </div>
                        {{/entrenador}}

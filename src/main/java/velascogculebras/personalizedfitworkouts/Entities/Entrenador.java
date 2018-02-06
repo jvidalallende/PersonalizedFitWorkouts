@@ -10,6 +10,11 @@ public class Entrenador {
     private long id;
     private String biografia;
     private String mail;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private String password;
     private String nombre;
     private String profileIcon;
