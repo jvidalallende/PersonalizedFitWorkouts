@@ -48,6 +48,11 @@ span.autorName {
     color: #333333;
 }
 
+div.name-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 div.grid {
     width: 30%;
     margin: 1%;

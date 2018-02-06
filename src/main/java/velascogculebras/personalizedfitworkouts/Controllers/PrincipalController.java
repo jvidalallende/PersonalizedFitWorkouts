@@ -1,6 +1,9 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,6 +87,8 @@ public class PrincipalController {
     @RequestMapping("/")
     private String getIndex(Model model) {
         model.addAttribute("entrenador", entrenadorRepository.findAll());
+        Pageable first5 = new PageRequest(0, 5, Sort.Direction.ASC, "date");
+        model.addAttribute("Rutinas", rutinaRepository.findAll(first5));
         return "index";
     }
 
