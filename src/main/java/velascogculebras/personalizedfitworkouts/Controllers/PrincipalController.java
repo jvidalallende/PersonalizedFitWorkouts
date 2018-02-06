@@ -76,6 +76,7 @@ public class PrincipalController {
         usuario1.setMail("p@gmail.com");
         usuario1.setName("Jose");
         usuario1.setPassword("p");
+        usuarioReporsitory.save(usuario1);
 
 
     }

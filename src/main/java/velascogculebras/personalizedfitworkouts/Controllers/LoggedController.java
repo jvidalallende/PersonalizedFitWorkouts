@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
+import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
@@ -19,8 +21,12 @@ public class LoggedController {
 
     @RequestMapping("/Logged")
     private String logged(Model model, @RequestParam String mail, @RequestParam String password){
-        if((usuarioReporsitory.findByMailAndPassword(mail,password)!= null) || (entrenadorRepository.findByMailAndPassword(mail,password)!= null))
-            return "index.html";
-        return "login.html";
+        Usuario u = usuarioReporsitory.findByMailAndPassword(mail,password);
+        Entrenador e = entrenadorRepository.findByMailAndPassword(mail,password);
+        if((u!= null) || (e!= null)) {
+            return "/";
+        }else {
+            return "login";
+        }
     }
 }
