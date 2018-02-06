@@ -43,3 +43,7 @@ span.autorName {
     font-style: italic;
     font-weight: bold;
 }
+
+.black-text {
+    color: #333333;
+}
