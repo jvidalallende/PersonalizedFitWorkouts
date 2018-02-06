@@ -46,20 +46,22 @@
     </nav>
 
 
-    <div class="container">
+    <div>
         {{#entrenadores}}
         <a href="/secEntrenador?id={{id}}">
-            <div class="card card-1 col-md-4">
+            <div class="card card-1 grid">
                 {{#profileIcon}}
                 <img class="img-circle center-block" src={{profileIcon}} height="250px" width="250px">
                 {{/profileIcon}}
                 {{^profileIcon}}
-                <img class="img-circle" src="images/default-avatar.png" height="400px" width="400px">
+                <img class="img-circle center-block" src="images/default-avatar.png" height="250px" width="250px">
                 {{/profileIcon}}
                 <p class="text-center black-text"><strong>{{nombre}}</strong></p>
+                {{#biografia}}
                 <p class="text-center black-text">
                     <small>{{biografia}}</small>
                 </p>
+                {{/biografia}}
             </div>
         </a>
         {{/entrenadores}}

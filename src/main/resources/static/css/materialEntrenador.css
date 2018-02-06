@@ -47,3 +47,8 @@ span.autorName {
 .black-text {
     color: #333333;
 }
+
+div.grid {
+    width: 30%;
+    margin: 1%;
+}
