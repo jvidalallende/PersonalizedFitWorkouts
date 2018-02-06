@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import velascogculebras.personalizedfitworkouts.Entities.Categoria;
-import velascogculebras.personalizedfitworkouts.Entities.Ejercicio;
-import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
-import velascogculebras.personalizedfitworkouts.Entities.Rutina;
+import velascogculebras.personalizedfitworkouts.Entities.*;
 import velascogculebras.personalizedfitworkouts.Repositories.CategoriaRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
+import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -26,6 +24,8 @@ public class PrincipalController {
     private CategoriaRepository categoriaRepository;
     @Autowired
     private EntrenadorRepository entrenadorRepository;
+    @Autowired
+    private UsuarioReporsitory usuarioReporsitory;
 
     @PostConstruct
     public void init() {
@@ -71,6 +71,11 @@ public class PrincipalController {
         rutina.setDate(new Date());
         entrenador.setRutinas(rutinas);
         rutinaRepository.save(rutina);
+
+        Usuario usuario1 = new Usuario();
+        usuario1.setMail("p@gmail.com");
+        usuario1.setName("Jose");
+        usuario1.setPassword("p");
 
 
     }

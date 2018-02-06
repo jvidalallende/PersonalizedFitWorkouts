@@ -1,4 +1,11 @@
-.centradol {
-    margin-top: 375px;
-    margin-left: -95px;
+.contenedor {
+    display: inline-block;
+    width: 40%;
+    border: solid;
+    padding: 2rem;
+    horiz-align: center;
+    vertical-align: center;
+    border-radius: 2rem;
+    margin-top: 10%;
+
 }

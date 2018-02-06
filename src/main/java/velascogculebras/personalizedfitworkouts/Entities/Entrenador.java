@@ -10,6 +10,7 @@ public class Entrenador {
     private long id;
     private String biografia;
     private String mail;
+    private String password;
     private String nombre;
     private String profileIcon;
 
@@ -18,6 +19,7 @@ public class Entrenador {
 
     public Entrenador() {
     }
+
 
     public void setProfileIcon(String profileIcon) {
         this.profileIcon = profileIcon;
