@@ -10,6 +10,9 @@ public class Rutina {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;
+    @OneToMany(mappedBy = "rutina")
+    private Comentario comentario;
+
     @ManyToOne
     private Entrenador entrenador;
 
