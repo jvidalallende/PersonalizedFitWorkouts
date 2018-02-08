@@ -8,6 +8,7 @@ public class Comentario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @ManyToOne
     private Usuario user;
     private String comentario;
     private Date date;

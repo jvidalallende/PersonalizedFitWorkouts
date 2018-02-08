@@ -12,6 +12,8 @@ public class Usuario {
     private String password;
     @OneToMany
     private List<Rutina> rutinasFav;
+    @OneToMany(mappedBy = "user")
+    private List<Comentario> comentarios;
 
 
 

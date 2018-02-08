@@ -11,10 +11,14 @@ public class Rutina {
     private long id;
     private String nombre;
     @OneToMany(mappedBy = "rutina")
-    private Comentario comentario;
+    private List<Comentario> comentarios;
 
     @ManyToOne
     private Entrenador entrenador;
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
 
     private Date date;
 
