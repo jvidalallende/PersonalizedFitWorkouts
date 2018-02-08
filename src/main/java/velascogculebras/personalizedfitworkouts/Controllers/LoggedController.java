@@ -23,6 +23,8 @@ public class LoggedController {
     private String logged(Model model, @RequestParam String mail, @RequestParam String password){
         Usuario u = usuarioReporsitory.findByMailAndPassword(mail,password);
         Entrenador e = entrenadorRepository.findByMailAndPassword(mail,password);
+        model.addAttribute("Usuario",u);
+        model.addAttribute("Entrenador",e);
         if((u!= null) || (e!= null)) {
             return "/";
         }else {

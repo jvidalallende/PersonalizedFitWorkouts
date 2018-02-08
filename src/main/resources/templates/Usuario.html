@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuario</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="col-md-9">
+        <div class="col-md-12" style="border-width:1px 1px 1x 1px; border-style: solid; border-color: lightgrey;">
+            <h3 style="text-align: center">Mi perfil <small>Añade información personal para compartir tu perfil</small></h3>
+        </div>
+        <form name="modifyProfile" id="ProfileForm" novalidate>
+            <div class="col-md-12" style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <br>
+                            <label>Información básica</label>
+                            <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                <input type="text" class="form-control" id="txtName" placeholder="Introduzca su nombre">
+                            </span>
+                            <br>
+                            <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                <input type="text" class="form-control" id="txtSurName" placeholder="Introduzca tus apellidos">
+                            </span>
+                            <br>
+                            <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                <input type="text" class="form-control" id="txtmail" placeholder="Introduzca tu email">
+                            </span>
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="control">
+                            <label>Biografía</label>
+                            <span id="alertBiography"data-toggle="popover" data-trigger="hover" data-placement="auto" title="" data-content="">
+                                <textarea rows="6" cols="30" class="form-control" id="txtByography" required maxlenght="999" style="resize:none" ></textarea>
+                            </span>
+                            <br>
+                            <span id="alertSelectLanguage" data-toggle="popover" data-trigger="hover" data-placement="auto" title="" data-content="">
+                                <select class="form-control" id="selectLanguage" title="Nacionalidad">
+                                    <option class="bs-tittle-option" value="" disable selected>Nacionalidad</option>
+                                    <option>Alemán</option>
+                                    <option>Español</option>
+                                    <option>Francés</option>
+                                    <option>Inglés</option>
+                                    <option>Italiano</option>
+                                </select>
+                            </span>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -34,14 +34,17 @@
                     <li class="active"><a href="#">Inicio</a></li>
                     <li><a href="/secEntrenadores">Entrenadores</a></li>
                     <li><a href="/secRutinas">Rutinas</a></li>
+                    {{#Usuario}}
+                    <li>{{name}}</li>
+                    {{/Usuario}}
 
                 </ul>
 
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login.html">login</a></li>
-
+                    <li><a href="/login.html">login </a></li>
                 </ul>
+
             </div>
         </nav>
 
