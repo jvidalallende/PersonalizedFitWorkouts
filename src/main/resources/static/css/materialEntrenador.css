@@ -57,3 +57,12 @@ div.grid {
     width: 30%;
     margin: 1%;
 }
+
+a > table {
+    color: #333333;
+}
+
+a:hover {
+    text-decoration: none;
+}
+

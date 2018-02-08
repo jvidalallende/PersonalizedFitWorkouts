@@ -8,68 +8,118 @@
     <link rel="stylesheet" href="../css/Material.css">
 </head>
 <body>
+<div class="container">
 
-{{#Rutinas}}
-<div class="card card-1">
-    <div class="autorHeader">
-        {{#entrenador}}
-        <a href="secEntrenador?id={{id}}">
-            <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
-        </a>
-        <span class="autorName"> {{nombre}}</span>
-        {{/entrenador}}
-    </div>
-    <div>
-        <div class="name-header">
-            <strong>{{nombre}}</strong>
-            <small>{{date}}</small>
+    <h1> Personalized Fit Workouts
+        <small> PFW</small>
+
+    </h1>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- El logotipo y el icono que despliega el menú se agrupan
+             para mostrarlos mejor en los dispositivos móviles -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Desplegar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">PFW</a>
         </div>
 
-        <table class="table table-bordered table-condensed">
-            <tr>
-                <th><p class="text-center">#</p></th>
-                <th><p class="text-center">Ejercicio</p></th>
-                <th><p class="text-center">Series</p></th>
-                <th><p class="text-center">Repeticiones</p></th>
-            </tr>
-            {{#ejercicios}}
-            <tr>
-                <th><p class="text-center">{{-index}}</p></th>
-                <th><p class="text-center">{{nombre}}</p></th>
-                <th><p class="text-center">{{series}}</p></th>
-                <th><p class="text-center">{{repeticiones}}</p></th>
-            </tr>
-            {{/ejercicios}}
-        </table>
-        {{#user}}
-        <!-- Preguntar como hacer if -->
-        <div align="right">
-            <a href="/addFav?userId={{id}}&rutinaId{{..id}}" class="btn btn-default"><span
-                    class="star glyphicon glyphicon-star"></span> Default text here</a>
-        </div>
-        {{/user}}
-        <strong>Categorias:</strong>
-        {{#categorias}}
-        <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
-        {{/categorias}}
-        <br>
+        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+             otro elemento que se pueda ocultar al minimizar la barra -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/secEntrenadores">Entrenadores</a></li>
+                <li><a href="/secRutinas"> Rutinas</a></li>
 
-        <span>{{descripcion}}</span>
-    </div>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login.html">login</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    {{#Rutinas}}
+
+    <div class="card card-1">
+        <div class="autorHeader">
+            {{#entrenador}}
+            <a href="secEntrenador?id={{id}}">
+                <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
+            </a>
+            <span class="autorName"> {{nombre}}</span>
+            {{/entrenador}}
+        </div>
+        <div>
+            <div class="name-header">
+                <strong>{{nombre}}</strong>
+                <small>{{date}}</small>
+            </div>
+
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <th><p class="text-center">#</p></th>
+                    <th><p class="text-center">Ejercicio</p></th>
+                    <th><p class="text-center">Series</p></th>
+                    <th><p class="text-center">Repeticiones</p></th>
+                </tr>
+                {{#ejercicios}}
+                <tr>
+                    <th><p class="text-center">{{-index}}</p></th>
+                    <th><p class="text-center">{{nombre}}</p></th>
+                    <th><p class="text-center">{{series}}</p></th>
+                    <th><p class="text-center">{{repeticiones}}</p></th>
+                </tr>
+                {{/ejercicios}}
+            </table>
+            {{#user}}
+            <!-- Preguntar como hacer if -->
+            <div align="right">
+                <a href="/addFav?userId={{id}}&rutinaId{{..id}}" class="btn btn-default"><span
+                        class="star glyphicon glyphicon-star"></span> Default text here</a>
+            </div>
+            {{/user}}
+            <strong>Categorias:</strong>
+            {{#categorias}}
+            <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
+            {{/categorias}}
+            <br>
+
+            <span>{{descripcion}}</span>
+        </div>
 </div>
-<hr>
-{{/Rutinas}}
-{{Comentarios}}
+    {{/Rutinas}}
+    <hr>
+    <h2>Comentarios</h2>
+
+
+    {{#comentarios}}
 <div class="card card-1">
     <div class="autorHeader">
         {{#user}}
+        {{#profileIcon}}
         <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
-        <span class="autorName"> {{nombre}}</span>
+        {{/profileIcon}}
+        {{^profileIcon}}
+        <img src="images/default-avatar.png" height="60px" width="60px" class="img-circle profile-icon">
+        {{/profileIcon}}
+        <span class="autorName"> {{name}}</span>
         {{/user}}
     </div>
-    <p class="text-center">{{comentario}}</p>
+    <hr style="border-color: #333333">
+    <p>{{comentario}}</p>
+    <p class="text-right" style="margin-bottom: 0">
+        <small>{{date}}</small>
+    </p>
 </div>
+    {{/comentarios}}
 
-
+</div>
 </body>
 </html>

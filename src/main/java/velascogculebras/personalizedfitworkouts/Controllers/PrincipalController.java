@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import velascogculebras.personalizedfitworkouts.Entities.*;
-import velascogculebras.personalizedfitworkouts.Repositories.CategoriaRepository;
-import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
-import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
-import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
+import velascogculebras.personalizedfitworkouts.Repositories.*;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -29,6 +26,8 @@ public class PrincipalController {
     private EntrenadorRepository entrenadorRepository;
     @Autowired
     private UsuarioReporsitory usuarioReporsitory;
+    @Autowired
+    private ComentarioRepository comentarioRepository;
 
     @PostConstruct
     public void init() {
@@ -67,13 +66,13 @@ public class PrincipalController {
         List<Ejercicio> ejercicios1 = new ArrayList<>();
         ejercicios1.add(ejercicio1);
         ejercicios1.add(ejercicio2);
-        rutina = new Rutina(ejercicios1);
-        rutina.setNombre("Test2");
-        rutina.setDescripcion("Rutina para probar el for");
-        rutina.setEntrenador(entrenador);
-        rutina.setDate(new Date());
+        Rutina rutina2 = new Rutina(ejercicios1);
+        rutina2.setNombre("Test2");
+        rutina2.setDescripcion("Rutina para probar el for");
+        rutina2.setEntrenador(entrenador);
+        rutina2.setDate(new Date());
         entrenador.setRutinas(rutinas);
-        rutinaRepository.save(rutina);
+        rutinaRepository.save(rutina2);
 
         Usuario usuario1 = new Usuario();
         usuario1.setMail("p@gmail.com");
@@ -81,7 +80,12 @@ public class PrincipalController {
         usuario1.setPassword("p");
         usuarioReporsitory.save(usuario1);
 
-
+        Comentario comentario = new Comentario();
+        comentario.setComentario("De Puta madre niño");
+        comentario.setDate(new Date());
+        comentario.setUser(usuario1);
+        comentario.setRutina(rutina2);
+        comentarioRepository.save(comentario);
     }
 
     @RequestMapping("/")

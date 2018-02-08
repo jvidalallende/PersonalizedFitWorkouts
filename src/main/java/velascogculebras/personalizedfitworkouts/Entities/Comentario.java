@@ -15,7 +15,7 @@ public class Comentario {
     @ManyToOne
     private Rutina rutina;
 
-    private Comentario(){
+    public Comentario() {
     }
 
     public Usuario getUser() {
