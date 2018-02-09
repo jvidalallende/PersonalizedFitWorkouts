@@ -81,7 +81,8 @@ public class PrincipalController {
         usuarioReporsitory.save(usuario1);
 
         Entrenador entrenador1 = new Entrenador();
-        entrenador.setPassword("pepe");
+        entrenador1.setNombre("pepe");
+        entrenador1.setPassword("pepe");
         entrenador1.setMail("pepe@gmail.com");
         entrenadorRepository.save(entrenador1);
 
