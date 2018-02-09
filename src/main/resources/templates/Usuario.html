@@ -16,22 +16,24 @@
                 <div class="col-md-8 col-md-offset-2">
 
                     <div class="control-group form-group">
+                        {{#user}}
                         <div class="controls">
                             <br>
                             <label>Información básica</label>
                             <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                <input type="text" class="form-control" id="txtName" placeholder="{{nombreU}}">
+                                <input type="text" class="form-control" id="txtName" placeholder="{{name}}">
                             </span>
                             <br>
                             <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                <input type="text" class="form-control" id="txtSurName" placeholder="{{passwordU}}">
+                                <input type="text" class="form-control" id="txtSurName" placeholder="{{password}}">
                             </span>
                             <br>
                             <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                <input type="text" class="form-control" id="txtmail" placeholder="{{emailU}}">
+                                <input type="text" class="form-control" id="txtmail" placeholder="{{mail}}">
                             </span>
                             <p class="help-block"></p>
                         </div>
+                        {{/user}}
                     </div>
                 </div>
             </div>

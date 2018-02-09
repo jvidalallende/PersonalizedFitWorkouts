@@ -54,6 +54,8 @@ public class PrincipalController {
         rutinaRepository.save(rutina);
 
         Entrenador entrenador = new Entrenador();
+        entrenador.setMail("lol");
+        entrenador.setPassword("lol");
         entrenador.setNombre("Entrenador");
         entrenador.setProfileIcon("/users/images/1.jpg");
         entrenador.setBiografia("Soy burgalés, pero afincado en Madrid desde hace muchos años. Soy periodista y amante " +
@@ -81,6 +83,7 @@ public class PrincipalController {
         usuarioReporsitory.save(usuario1);
 
         Entrenador entrenador1 = new Entrenador();
+        entrenador1.setNombre("pepe");
         entrenador.setPassword("pepe");
         entrenador1.setMail("pepe@gmail.com");
         entrenadorRepository.save(entrenador1);

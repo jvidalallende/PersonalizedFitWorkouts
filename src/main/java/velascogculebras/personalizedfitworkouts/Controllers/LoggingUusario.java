@@ -13,11 +13,9 @@ public class LoggingUusario {
     private UsuarioReporsitory usuarioReporsitory;
 
     @RequestMapping("/user")
-    private String LoggingUsuario(Model model, @RequestParam String nombreU,@RequestParam String passwordU,@RequestParam String emailU){
-        model.addAttribute("name",nombreU);
-        model.addAttribute("mail",emailU);
-        model.addAttribute("password",passwordU);
-        usuarioReporsitory.findByMailAndPassword("p@gmail.com","p");
+    private String LoggingUsuario(Model model){
+
+        model.addAttribute("user",usuarioReporsitory.findByMailAndPassword("p@gmail.com","p"));
         return "Usuario";
     }
 }

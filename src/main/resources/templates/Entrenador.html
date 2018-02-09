@@ -14,34 +14,43 @@
     <form name="modifyProfile" id="ProfileForm" novalidate>
         <div class="col-md-12" style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
             <div class="col-md-8 col-md-offset-2">
-
                 <div class="control-group form-group">
+                    {{#trainer}}
                     <div class="controls">
                         <br>
                         <label>Información básica</label>
                         <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                <input type="text" class="form-control" id="txtName" placeholder="{{nombreE}}">
+                                <input type="text" class="form-control" id="txtName" placeholder="{{nombre}}">
                             </span>
                         <br>
                         <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                <input type="text" class="form-control" id="txtSurName" placeholder="{{passwordE}}">
+                                <input type="text" class="form-control" id="txtSurName" placeholder="{{password}}">
                             </span>
                         <br>
                         <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                <input type="text" class="form-control" id="txtmail" placeholder="{{emailE}}">
+                                <input type="text" class="form-control" id="txtmail" placeholder="{{mail}}">
                             </span>
                         <p class="help-block"></p>
                     </div>
                 </div>
+                {{/trainer}}
+                {{#trainer}}
                 <div class="control-group form-group">
                     <div class="control">
                         <label>Biografía</label>
                         <span id="alertBiography"data-toggle="popover" data-trigger="hover" data-placement="auto" title="" data-content="">
-                                <textarea rows="6" cols="30" class="form-control" id="txtByography" required maxlenght="999" style="resize:none" >{{bioE}}</textarea>
+                            {{#biografia}}
+                                <textarea rows="6" cols="30" class="form-control" id="txtByography" required maxlenght="999" style="resize:none" >{{biografia}}</textarea>
+                            {{/biografia}}
+                            {{^biografia}}
+                                <textarea rows="6" cols="30" class="form-control" id="txtByography" required maxlenght="999" style="resize:none" >No hay biografia</textarea>
+                            {{/biografia}}
                             </span>
+
                         <br>
                     </div>
                 </div>
+                {{/trainer}}
             </div>
         </div>
     </form>

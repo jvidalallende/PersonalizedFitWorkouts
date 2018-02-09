@@ -25,8 +25,8 @@ public class LoggedController {
         model.addAttribute("Entrenador",e);
         if(u!= null){
             return "/user";
-        } else if (e != null) {
-            return "/entrenador";
+        } else if (e!= null) {
+            return "redirect:/trainer";
         } else {
             model.addAttribute("error", "Email or password incorrect");
             return "login";
