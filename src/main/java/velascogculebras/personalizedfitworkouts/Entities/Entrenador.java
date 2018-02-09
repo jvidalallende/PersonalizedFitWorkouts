@@ -9,6 +9,7 @@ public class Entrenador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String biografia;
+    @Column(unique = true)
     private String mail;
 
     public void setPassword(String password) {

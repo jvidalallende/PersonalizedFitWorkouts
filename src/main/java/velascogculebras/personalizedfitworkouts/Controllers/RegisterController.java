@@ -19,21 +19,33 @@ public class RegisterController {
 
     @RequestMapping("/register")
     private String reqister(Model model, @RequestParam String nombre, @RequestParam String password, @RequestParam String type, @RequestParam String email) {
-        if (type.equals("Usuario")) {
-            Usuario usuario = new Usuario();
-            usuario.setMail(email);
-            usuario.setName(nombre);
-            usuario.setPassword(password);
-            usuarioReporsitory.save(usuario);
-        } else if (type.equals("Entrenador")) {
-            Entrenador entrenador = new Entrenador();
-            entrenador.setNombre(nombre);
-            entrenador.setMail(email);
-            entrenador.setPassword(password);
-            entrenadorRepository.save(entrenador);
-        }
-        model.addAttribute("name", nombre);
+        if (entrenadorRepository.findByMail(email) == null && usuarioReporsitory.findByMail(email) == null) {
 
-        return "/";
+            if (type.equals("Usuario")) {
+                Usuario usuario = new Usuario();
+                usuario.setMail(email);
+                usuario.setName(nombre);
+                usuario.setPassword(password);
+                usuarioReporsitory.save(usuario);
+            } else if (type.equals("Entrenador")) {
+                Entrenador entrenador = new Entrenador();
+                entrenador.setNombre(nombre);
+                entrenador.setMail(email);
+                entrenador.setPassword(password);
+                entrenadorRepository.save(entrenador);
+            }
+
+            return "/";
+        } else {
+            model.addAttribute("error", "This email is already in use");
+            return "registro";
+        }
+
+
+    }
+
+    @RequestMapping("/registro")
+    private String registro() {
+        return "registro";
     }
 }

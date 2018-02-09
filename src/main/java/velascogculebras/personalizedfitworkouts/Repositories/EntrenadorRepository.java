@@ -7,4 +7,6 @@ import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 @Repository
 public interface EntrenadorRepository extends JpaRepository<Entrenador, Long> {
     Entrenador findByMailAndPassword(String mail, String password);
+
+    Entrenador findByMail(String mail);
 }

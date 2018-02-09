@@ -8,4 +8,6 @@ import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 public interface UsuarioReporsitory extends JpaRepository<Usuario,Long> {
 
     Usuario findByMailAndPassword(String mail, String password);
+
+    Usuario findByMail(String mail);
 }

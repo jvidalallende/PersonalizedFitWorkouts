@@ -3,9 +3,7 @@ package velascogculebras.personalizedfitworkouts.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
@@ -27,10 +25,16 @@ public class LoggedController {
         model.addAttribute("Entrenador",e);
         if(u!= null){
             return "/user";
-        }
-        if(e!= null) {
+        } else if (e != null) {
             return "/entrenador";
+        } else {
+            model.addAttribute("error", "Email or password incorrect");
+            return "login";
         }
+    }
+
+    @RequestMapping("/login")
+    private String login() {
         return "login";
     }
 }
