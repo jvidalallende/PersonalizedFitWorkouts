@@ -80,6 +80,11 @@ public class PrincipalController {
         usuario1.setPassword("p");
         usuarioReporsitory.save(usuario1);
 
+        Entrenador entrenador1 = new Entrenador();
+        entrenador.setPassword("pepe");
+        entrenador1.setMail("pepe@gmail.com");
+        entrenadorRepository.save(entrenador1);
+
         Comentario comentario = new Comentario();
         comentario.setComentario("De Puta madre niño");
         comentario.setDate(new Date());

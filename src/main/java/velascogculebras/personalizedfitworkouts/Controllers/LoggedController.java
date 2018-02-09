@@ -25,10 +25,12 @@ public class LoggedController {
         Entrenador e = entrenadorRepository.findByMailAndPassword(mail,password);
         model.addAttribute("Usuario",u);
         model.addAttribute("Entrenador",e);
-        if((u!= null) || (e!= null)) {
-            return "/";
-        }else {
-            return "login";
+        if(u!= null){
+            return "/user";
         }
+        if(e!= null) {
+            return "/entrenador";
+        }
+        return "login";
     }
 }
