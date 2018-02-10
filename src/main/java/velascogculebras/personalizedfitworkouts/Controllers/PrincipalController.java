@@ -55,7 +55,7 @@ public class PrincipalController {
 
         Entrenador entrenador = new Entrenador();
         entrenador.setNombre("Entrenador");
-        entrenador.setProfileIcon("/users/images/1.jpg");
+        entrenador.setProfileIcon("/trainers/images/1.jpg");
         entrenador.setBiografia("Soy burgalés, pero afincado en Madrid desde hace muchos años. Soy periodista y amante " +
                 "del deporte y de todo lo que le rodea. Siempre me ha gustado investigar al respecto y aprender nuevas ");
         entrenadorRepository.save(entrenador);
