@@ -27,20 +27,20 @@ El servicio interno realizará dos funciones, en primer lugar será el encargado
 - Ivan Velasco Gonzalez
     - Mail: i.velascog@alumnos.urjc.es
     - GitHub: i.velascog1
-##Fase 2
+## Fase 2
 En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama de navegación podemos observar cómo movernos en las diferentes pantallas de la aplicacaión.
 
-##Diagrama navegación
+## Diagrama navegación
 
 A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
-##Diagrama E/R
+## Diagrama E/R
 
-##Diagrama UML
+## Diagrama UML
 
-##Páginas principales
+## Páginas principales
 
-#Indice
+# Indice
 
 Página principal o índice desde el cual se accede a los diferenntes servicios de entrenedors y rutinas así como al login.
 
