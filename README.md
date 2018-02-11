@@ -30,28 +30,32 @@ El servicio interno realizará dos funciones, en primer lugar será el encargado
 ##Fase 2
 En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama de navegación podemos observar cómo movernos en las diferentes pantallas de la aplicacaión.
 
-###Diagrama navegación
+##Diagrama navegación
 
 A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
-###Diagrama UML
+##Diagrama E/R
 
-###Páginas principales 
+##Diagrama UML
+
+##Páginas principales
+
+#Indice
 Página principal o índice desde el cual se accede a los diferenntes servicios de entrenedors y rutinas así como al login.
-![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/index.PNG)
-
-![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/entrenadores.PNG)
-
-![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/rutinas.PNG)
-
-![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/entrenador_ver.PNG)
-
-![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/rutina_ver.PNG)
-
-![login](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/login.PNG)
-
-![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/registro.PNG)
-
-![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/perfil_entrenador.PNG)
-
-![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/perfil_usuario.PNG)
+![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/index.PNG?raw=true)
+#Entrenadores
+![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/entrenadores.PNG?raw=true)
+#Rutinas
+![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/rutinas.PNG?raw=true)
+#Ver entrenador
+![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/entrenador_ver.PNG?raw=true)
+#Ver rutina
+![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/rutina_ver.PNG?raw=true)
+#Login
+![login](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/login.PNG?raw=true)
+#Registro
+![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/registro.PNG?raw=true)
+#Perfil del entrenador
+![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/perfil_entrenador.PNG?raw=true)
+#Perfil del usuario
+![perfil_usuario](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/perfil_usuario.PNG?raw=true)
