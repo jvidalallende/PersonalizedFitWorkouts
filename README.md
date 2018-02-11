@@ -38,5 +38,5 @@ A continuación en el diagrama UML podemos ver las diferentes entidades con sus 
 
 ###Páginas principales 
 Página principal o índice desde el cual se accede a los diferenntes servicios de entrenedors y rutinas así como al login.
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![índice](https://octodex.github.com/images/yaktocat.png)
 
