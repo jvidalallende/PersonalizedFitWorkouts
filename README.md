@@ -38,5 +38,12 @@ A continuación en el diagrama UML podemos ver las diferentes entidades con sus 
 
 ###Páginas principales 
 Página principal o índice desde el cual se accede a los diferenntes servicios de entrenedors y rutinas así como al login.
-![índice](https://octodex.github.com/images/yaktocat.png)
-
+![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/index.PNG)
+![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/entrenadores.PNG)
+![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/rutinas.PNG)
+![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/entrenador_ver.PNG)
+![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/rutina_ver.PNG)
+![login](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/login.PNG)
+![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/registro.PNG)
+![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/perfil_entrenador.PNG)
+![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/tree/master/screenshot/images/perfil_usuario.PNG)
