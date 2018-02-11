@@ -38,57 +38,57 @@ A continuación en el diagrama UML podemos ver las diferentes entidades con sus 
 
 ![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.PNG?raw=true)
 
-## Páginas principales
+# Páginas principales
 
-# Indice
+## Indice
 
 Página principal o índice desde el cual se accede a los diferentes servicios de entrenedors y rutinas así como al login.
 
 ![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/index.PNG?raw=true)
 
-# Entrenadores
+## Entrenadores
 
 Visualización de todos los entrenadores que están registrados.
 
 ![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/entrenadores.PNG?raw=true)
 
-# Rutinas
+## Rutinas
 
 Visualización de todas las rutinas disponibles y subidas por los diferentes entrenadores con sus respectivas categorías.
 
 ![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/rutinas.PNG?raw=true)
 
-# Ver entrenador
+## Ver entrenador
 
 Posibilita acceder al perfil público del entrenador deseado.
 
 ![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/entrenador_ver.PNG?raw=true)
 
-# Ver rutina
+## Ver rutina
 
 Permite acceder a una rutina en concreto.
 
 ![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/rutina_ver.PNG?raw=true)
 
-# Login
+## Login
 
 Patalla de inicio de sesión tanto para usuarios como para entrenadores.
 
 ![login](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/login.PNG?raw=true)
 
-# Registro
+## Registro
 
 Registro con diferenciación de rol dentro de la aplicación según seamos un usuario o entrenador.
 
 ![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/registro.PNG?raw=true)
 
-# Perfil del entrenador
+## Perfil del entrenador
 
 Perfil privado del entrenador al que puede acceder mediante el login.
 
 ![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/perfil_entrenador.PNG?raw=true)
 
-# Perfil del usuario
+## Perfil del usuario
 
 Perfil privado del usuario al que puede acceder mediante el login, a diferencia del entrenador solo contiene sus datos más relevantes..
 
