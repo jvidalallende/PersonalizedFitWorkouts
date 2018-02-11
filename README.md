@@ -34,7 +34,7 @@ En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama
 
 A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
-![E/R](https://raw.githubusercontent.com/sculebras1/PersonalizedFitWorkouts/master/screenshot/images/ER.PNG)
+![E/R](https://raw.githubusercontent.com/sculebras1/PersonalizedFitWorkouts/master/screenshot/images/ERd.PNG)
 
 ![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.PNG?raw=true)
 
