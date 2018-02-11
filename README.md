@@ -43,19 +43,35 @@ A continuación en el diagrama UML podemos ver las diferentes entidades con sus 
 #Indice
 Página principal o índice desde el cual se accede a los diferenntes servicios de entrenedors y rutinas así como al login.
 ![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/index.PNG?raw=true)
+
 #Entrenadores
+
 ![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/entrenadores.PNG?raw=true)
+
 #Rutinas
+
 ![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/rutinas.PNG?raw=true)
+
 #Ver entrenador
+
 ![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/entrenador_ver.PNG?raw=true)
+
 #Ver rutina
+
 ![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/rutina_ver.PNG?raw=true)
+
 #Login
+
 ![login](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/login.PNG?raw=true)
+
 #Registro
+
 ![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/registro.PNG?raw=true)
+
 #Perfil del entrenador
+
 ![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/perfil_entrenador.PNG?raw=true)
+
 #Perfil del usuario
+
 ![perfil_usuario](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/perfil_usuario.PNG?raw=true)
