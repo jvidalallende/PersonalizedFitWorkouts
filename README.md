@@ -14,7 +14,7 @@ La web a implementar trata de acercar al usuario a planes de entrenamiento a tra
 - Usuario: Usuario básico que podrá visualizar , valorar , comentar y añadir a sus favoritos las rutinas , además podría contactar con un entrenador para obtener rutinas personalizadas(privada).
 - Entrenador: Usuario con capacidad de creación y compartición de rutinas, además puede comunicarse con los usuarios normales.
 - Favorito: Rutinas marcadas como favoritas para cada usuario en particular.
-- velascogculebras.personalizedfitworkouts.Entities.Rutina: velascogculebras.personalizedfitworkouts.Entities.Rutina de entrenamiento que se clasifica en; rutinas generales y rutinas específicas para un usuario.
+- Rutina: velascogculebras.personalizedfitworkouts.Entities.Rutina de entrenamiento que se clasifica en; rutinas generales y rutinas específicas para un usuario.
 - Valoración/Comentario: Valoracion/comentario que se podrá poner a las rutinas o a los entrenadores.
 
 ## Servicio Interno
@@ -34,7 +34,7 @@ En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama
 
 A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
-## Diagrama E/R
+![E/R](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/ER.jPNG?raw=true)
 
 ![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.PNG?raw=true)
 
