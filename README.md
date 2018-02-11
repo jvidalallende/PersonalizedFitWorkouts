@@ -36,7 +36,7 @@ A continuación en el diagrama UML podemos ver las diferentes entidades con sus 
 
 ## Diagrama E/R
 
-![d_navegación](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.jpg?raw=true)
+![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.PNG?raw=true)
 
 ## Páginas principales
 
