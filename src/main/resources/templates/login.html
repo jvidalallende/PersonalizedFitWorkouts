@@ -10,6 +10,41 @@
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
+<div class="container">
+    <h1> Personalized Fit Workouts
+        <small> PFW</small>
+    </h1>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- El logotipo y el icono que despliega el menú se agrupan
+             para mostrarlos mejor en los dispositivos móviles -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Desplegar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">PFW</a>
+        </div>
+
+        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+             otro elemento que se pueda ocultar al minimizar la barra -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/secEntrenadores">Entrenadores</a></li>
+                <li><a href="/secRutinas"> Rutinas</a></li>
+
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">login</a></li>
+
+            </ul>
+        </div>
+    </nav>
 <div class="contenedor col-md-6 col-md-offset-3 card card-1">
     <form action="/Logged" method="get">
         <div class="form-group">
@@ -34,6 +69,6 @@
     </div>
     {{/error}}
 </div>
-ç
+</div>
 </body>
 </html>

@@ -49,10 +49,17 @@
 
 
     <div style="display: inline-flex">
+        {{#profileIcon}}
         <img src="{{profileIcon}}" class="img-circle" height="180px" width="180px">
+        {{/profileIcon}}
+        {{^profileIcon}}
+        <img src="images/default-avatar.png" class="img-circle" height="180px" width="180px">
+        {{/profileIcon}}
         <div id="Descripcion">
             <h3>{{nombre}}</h3>
+            {{#biografia}}
             <p>{{biografia}}</p>
+            {{/biografia}}
         </div>
     </div>
     {{/entrenador}}
