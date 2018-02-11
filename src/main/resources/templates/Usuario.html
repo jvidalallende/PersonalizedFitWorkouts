@@ -11,6 +11,14 @@
         <div class="col-md-12" style="border-width:1px 1px 1x 1px; border-style: solid; border-color: lightgrey;">
             <h3 style="text-align: center">Mi perfil <small>Añade información personal para compartir tu perfil</small></h3>
         </div>
+        <div>
+            {{#profileIcon}}
+            <img src="{{profileIcon}}" height="60px" width="60px" class="img-circle">
+            {{/profileIcon}}
+            {{^profileIcon}}
+            <img src="/images/default-avatar.png" height="60px" width="60px" class="img-circle">
+            {{/profileIcon}}
+        </div>
         <form name="modifyProfile" id="ProfileForm" novalidate>
             <div class="col-md-12" style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
                 <div class="col-md-8 col-md-offset-2">

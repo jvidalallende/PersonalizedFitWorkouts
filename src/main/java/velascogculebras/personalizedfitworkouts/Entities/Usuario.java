@@ -11,6 +11,7 @@ public class Usuario {
     private String mail;
     private String name;
     private String password;
+    private String profileIcon;
     @OneToMany
     private List<Rutina> rutinasFav;
     @OneToMany(mappedBy = "user")
