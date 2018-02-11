@@ -30,13 +30,13 @@ El servicio interno realizará dos funciones, en primer lugar será el encargado
 ## Fase 2
 En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama de navegación podemos observar cómo movernos en las diferentes pantallas de la aplicacaión.
 
-## Diagrama navegación
+![d_navegación](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20navegacion.jpg?raw=true)
 
 A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
 ## Diagrama E/R
 
-## Diagrama UML
+![d_navegación](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.jpg?raw=true)
 
 ## Páginas principales
 
