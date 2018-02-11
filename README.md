@@ -32,9 +32,11 @@ En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama
 
 ![d_navegación](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20navegacion.jpg?raw=true)
 
-A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
+El diagrama E/R muestra las relaciones entre las distintas entidades.
 
 ![E/R](https://raw.githubusercontent.com/sculebras1/PersonalizedFitWorkouts/master/screenshot/images/ERd.PNG)
+
+A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
 ![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.PNG?raw=true)
 
