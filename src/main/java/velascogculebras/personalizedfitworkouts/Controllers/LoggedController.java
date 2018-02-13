@@ -24,7 +24,7 @@ public class LoggedController {
         model.addAttribute("Usuario",u);
         model.addAttribute("Entrenador",e);
         if(u!= null){
-            return "/user";
+            return "redirect:/user";
         } else if (e!= null) {
             return "redirect:/trainer";
         } else {

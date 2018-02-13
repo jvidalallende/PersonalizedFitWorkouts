@@ -35,7 +35,7 @@ public class RegisterController {
                 entrenadorRepository.save(entrenador);
             }
 
-            return "/";
+            return "redirect:/";
         } else {
             model.addAttribute("error", "This email is already in use");
             return "registro";
