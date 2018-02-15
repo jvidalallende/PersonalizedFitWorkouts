@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,8 @@ import velascogculebras.personalizedfitworkouts.Entities.*;
 import velascogculebras.personalizedfitworkouts.Repositories.*;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +35,7 @@ public class PrincipalController {
     @PostConstruct
     public void init() {
 
-
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         List<Ejercicio> ejercicios = new ArrayList<>(4);
         Ejercicio ejercicio = new Ejercicio("Press Militar", 4, "12-10-10-8");
         ejercicios.add(ejercicio);
@@ -55,7 +58,7 @@ public class PrincipalController {
 
         Entrenador entrenador = new Entrenador();
         entrenador.setMail("lol");
-        entrenador.setPasswordHash("lol");
+        entrenador.setPasswordHash(encoder.encode("lol"));
         entrenador.setNombre("Entrenador");
         entrenador.setProfileIcon("/trainers/images/1.jpg");
         entrenador.setBiografia("Soy burgalés, pero afincado en Madrid desde hace muchos años. Soy periodista y amante " +
@@ -79,12 +82,12 @@ public class PrincipalController {
         Usuario usuario1 = new Usuario();
         usuario1.setMail("p@gmail.com");
         usuario1.setName("Jose");
-        usuario1.setPasswordHash("p");
+        usuario1.setPasswordHash(encoder.encode("p"));
         usuarioReporsitory.save(usuario1);
 
         Entrenador entrenador1 = new Entrenador();
         entrenador1.setNombre("pepe");
-        entrenador1.setPasswordHash("pepe");
+        entrenador1.setPasswordHash(encoder.encode("pepe"));
         entrenador1.setMail("pepe@gmail.com");
         entrenadorRepository.save(entrenador1);
 
@@ -97,7 +100,11 @@ public class PrincipalController {
     }
 
     @RequestMapping("/")
-    private String getIndex(Model model) {
+    private String getIndex(Model model, HttpServletRequest request) {
+        Principal user = request.getUserPrincipal();
+        if (user != null) {
+            model.addAttribute("user", usuarioReporsitory.findByMail(user.getName()));
+        }
         model.addAttribute("entrenador", entrenadorRepository.findAll());
         Pageable first5 = new PageRequest(0, 5, Sort.Direction.ASC, "date");
         model.addAttribute("Rutinas", rutinaRepository.findAll(first5));

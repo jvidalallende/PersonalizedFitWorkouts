@@ -5,30 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
-import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
+import velascogculebras.personalizedfitworkouts.Configuration.UserRepositoryAuthenticationProvider;
 
 @Controller
 public class LoggedController {
     @Autowired
-    private UsuarioReporsitory usuarioReporsitory;
-    @Autowired
-    private EntrenadorRepository entrenadorRepository;
+    private UserRepositoryAuthenticationProvider userRepositoryAuthenticationProvider;
 
     @RequestMapping("/Logged")
     private String logged(Model model, @RequestParam String mail, @RequestParam String password){
-      /*  Usuario u = usuarioReporsitory.findByMailAndPassword(mail,password);
-        Entrenador e = entrenadorRepository.findByMailAndPassword(mail,password);
-        model.addAttribute("Usuario",u);
-        model.addAttribute("Entrenador",e);
-        if(u!= null){
-            return "redirect:/user";
-        } else if (e!= null) {
-            return "redirect:/trainer";
-        } else {
-            model.addAttribute("error", "Email or password incorrect");
-            return "login";
-        }*/
+
         return "/";
     }
 
@@ -37,7 +23,7 @@ public class LoggedController {
         return "login";
     }
 
-    @RequestMapping("/loginError")
+    @RequestMapping("/loginerror")
     private String loginError(Model model) {
         model.addAttribute("error", "Email or password incorrect");
         return "login";

@@ -64,6 +64,6 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return false;
+        return true;
     }
 }

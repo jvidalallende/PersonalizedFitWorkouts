@@ -20,6 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/secEntrenadores").permitAll();
         http.authorizeRequests().antMatchers("/secRutina").permitAll();
         http.authorizeRequests().antMatchers("/secEntrenador").permitAll();
+        http.authorizeRequests().antMatchers("/trainers/images/*").permitAll();
+        http.authorizeRequests().antMatchers("/users/images/*").permitAll();
         http.authorizeRequests().antMatchers("/home").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers("/user").hasAnyRole("USER");
@@ -30,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Login form
         http.formLogin().loginPage("/login");
-        http.formLogin().usernameParameter("username");
+        http.formLogin().usernameParameter("mail");
         http.formLogin().passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/");
         http.formLogin().failureUrl("/loginerror");
@@ -42,10 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.authenticationProvider(authenticationProvider);
 
-        auth.inMemoryAuthentication().withUser("user").password("pass").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("adminpass").roles("USER", "ADMIN");
     }
 }
