@@ -10,7 +10,17 @@ public class Usuario {
     @Column(unique = true)
     private String mail;
     private String name;
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
     private String passwordHash;
+
+    public String getMail() {
+        return mail;
+    }
+
     private String profileIcon;
     @OneToMany
     private List<Rutina> rutinasFav;

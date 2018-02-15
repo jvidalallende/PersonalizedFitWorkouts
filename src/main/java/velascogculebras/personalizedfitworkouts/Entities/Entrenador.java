@@ -9,8 +9,18 @@ public class Entrenador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String biografia;
+
+    public String getMail() {
+        return mail;
+    }
+
     @Column(unique = true)
     private String mail;
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
     private String passwordHash;
     private String nombre;
     private String profileIcon;
