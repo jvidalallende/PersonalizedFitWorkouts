@@ -11,21 +11,18 @@ public class Entrenador {
     private String biografia;
     @Column(unique = true)
     private String mail;
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    private String password;
+    private String passwordHash;
     private String nombre;
     private String profileIcon;
-
     @OneToMany(mappedBy = "entrenador")
     private List<Rutina> rutinas;
 
     public Entrenador() {
     }
 
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 
     public void setProfileIcon(String profileIcon) {
         this.profileIcon = profileIcon;
@@ -39,6 +36,10 @@ public class Entrenador {
         return rutinas;
     }
 
+    public void setRutinas(List<Rutina> rutinas) {
+        this.rutinas = rutinas;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -49,10 +50,6 @@ public class Entrenador {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setRutinas(List<Rutina> rutinas) {
-        this.rutinas = rutinas;
     }
 
 

@@ -10,7 +10,7 @@ public class Usuario {
     @Column(unique = true)
     private String mail;
     private String name;
-    private String password;
+    private String passwordHash;
     private String profileIcon;
     @OneToMany
     private List<Rutina> rutinasFav;
@@ -26,7 +26,9 @@ public class Usuario {
 
     public void setName(String name) {this.name = name; }
 
-    public void setPassword(String password) {this.password = password;}
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 
     public void setRutinasFav(List<Rutina> rutinasFav) {this.rutinasFav = rutinasFav;}
 

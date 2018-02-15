@@ -37,4 +37,10 @@ public class LoggedController {
     private String login() {
         return "login";
     }
+
+    @RequestMapping("/loginError")
+    private String loginError(Model model) {
+        model.addAttribute("error", "Email or password incorrect");
+        return "login";
+    }
 }
