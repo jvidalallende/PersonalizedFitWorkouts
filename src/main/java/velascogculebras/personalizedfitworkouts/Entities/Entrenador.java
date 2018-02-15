@@ -9,18 +9,10 @@ public class Entrenador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String biografia;
-
-    public String getMail() {
-        return mail;
-    }
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
     @Column(unique = true)
     private String mail;
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
     private String passwordHash;
     private String nombre;
     private String profileIcon;
@@ -28,6 +20,18 @@ public class Entrenador {
     private List<Rutina> rutinas;
 
     public Entrenador() {
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public void setPasswordHash(String passwordHash) {
@@ -54,13 +58,12 @@ public class Entrenador {
         this.id = id;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
 
+    public List<String> getRoles() {
+        return roles;
+    }
 }

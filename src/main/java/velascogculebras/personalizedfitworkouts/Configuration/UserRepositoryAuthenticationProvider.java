@@ -40,7 +40,8 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
             if (!new BCryptPasswordEncoder().matches(password, entrenador.getPasswordHash())) {
                 throw new BadCredentialsException("Password incorrect");
             }
-
+            
+            List<GrantedAuthority> roles = new ArrayList<>();
             for (String role : entrenador.getRoles()) {
                 roles.add(new SimpleGrantedAuthority(role));
             }

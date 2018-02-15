@@ -1,4 +1,5 @@
 package velascogculebras.personalizedfitworkouts.Entities;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,42 +12,54 @@ public class Usuario {
     private String mail;
     private String name;
 
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
     private String passwordHash;
-
-    public String getMail() {
-        return mail;
-    }
-
     private String profileIcon;
     @OneToMany
     private List<Rutina> rutinasFav;
     @OneToMany(mappedBy = "user")
     private List<Comentario> comentarios;
 
-
-
     public Usuario() {
     }
 
-    public void setMail(String mail) {this.mail = mail; }
-
-    public void setName(String name) {this.name = name; }
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
-    public void setRutinasFav(List<Rutina> rutinasFav) {this.rutinasFav = rutinasFav;}
+    public String getMail() {
+        return mail;
+    }
 
-    public List<Rutina> getRutinasFav() {return rutinasFav;}
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
-    public long getId() {return id;}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Rutina> getRutinasFav() {
+        return rutinasFav;
+    }
+
+    public void setRutinasFav(List<Rutina> rutinasFav) {
+        this.rutinasFav = rutinasFav;
+    }
+
+    public long getId() {
+        return id;
+    }
 
 
+    public List<String> getRoles() {
+        return roles;
+    }
 }
 
 
