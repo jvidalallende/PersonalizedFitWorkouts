@@ -7,14 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class LoggingUusario {
     @Autowired
     private UsuarioReporsitory usuarioReporsitory;
 
     @RequestMapping("/user")
-    private String LoggingUsuario(Model model){
-
+    private String LoggingUsuario(Model model, HttpServletRequest request){
+        model.addAttribute("user", request.isUserInRole("USER"));
         model.addAttribute("user",usuarioReporsitory.findByMailAndPassword("p@gmail.com","p"));
         return "Usuario";
     }
