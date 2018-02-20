@@ -16,6 +16,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
+        http.authorizeRequests().antMatchers("/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/secRutinas").permitAll();
         http.authorizeRequests().antMatchers("/secEntrenadores").permitAll();
         http.authorizeRequests().antMatchers("/secRutina").permitAll();
@@ -34,8 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("mail");
         http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/");
+        http.formLogin().defaultSuccessUrl("/", true);
         http.formLogin().failureUrl("/loginerror");
+
+        //logout
+        http.logout().logoutUrl("/logout");
+        http.logout().logoutSuccessUrl("/");
 
         // Disable CSRF at the moment
         http.csrf().disable();
