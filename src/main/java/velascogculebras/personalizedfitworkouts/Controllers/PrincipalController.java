@@ -59,7 +59,7 @@ public class PrincipalController {
         Entrenador entrenador = new Entrenador();
         entrenador.setMail("lol");
         entrenador.setPasswordHash(encoder.encode("lol"));
-        entrenador.setNombre("Entrenador");
+        entrenador.setName("Entrenador");
         entrenador.setProfileIcon("/trainers/images/1.jpg");
         entrenador.setBiografia("Soy burgalés, pero afincado en Madrid desde hace muchos años. Soy periodista y amante " +
                 "del deporte y de todo lo que le rodea. Siempre me ha gustado investigar al respecto y aprender nuevas ");
@@ -86,7 +86,7 @@ public class PrincipalController {
         usuarioReporsitory.save(usuario1);
 
         Entrenador entrenador1 = new Entrenador();
-        entrenador1.setNombre("pepe");
+        entrenador1.setName("pepe");
         entrenador1.setPasswordHash(encoder.encode("pepe"));
         entrenador1.setMail("pepe@gmail.com");
         entrenadorRepository.save(entrenador1);
@@ -103,7 +103,14 @@ public class PrincipalController {
     private String getIndex(Model model, HttpServletRequest request) {
         Principal user = request.getUserPrincipal();
         if (user != null) {
-            model.addAttribute("user", usuarioReporsitory.findByMail(user.getName()));
+            Usuario usuario = usuarioReporsitory.findByMail(user.getName());
+            if (usuario == null) {
+                Entrenador entrenador = entrenadorRepository.findByMail(user.getName());
+                model.addAttribute("logged", entrenador);
+            } else {
+                model.addAttribute("logged", usuario);
+            }
+
         }
         model.addAttribute("entrenador", entrenadorRepository.findAll());
         Pageable first5 = new PageRequest(0, 5, Sort.Direction.ASC, "date");

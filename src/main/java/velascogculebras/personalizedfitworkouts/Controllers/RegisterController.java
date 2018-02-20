@@ -29,7 +29,7 @@ public class RegisterController {
                 usuarioReporsitory.save(usuario);
             } else if (type.equals("Entrenador")) {
                 Entrenador entrenador = new Entrenador();
-                entrenador.setNombre(nombre);
+                entrenador.setName(nombre);
                 entrenador.setMail(email);
                 entrenador.setPasswordHash(password);
                 entrenadorRepository.save(entrenador);

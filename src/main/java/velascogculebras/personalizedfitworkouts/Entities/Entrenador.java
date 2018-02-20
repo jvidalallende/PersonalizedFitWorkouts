@@ -14,7 +14,7 @@ public class Entrenador {
     @Column(unique = true)
     private String mail;
     private String passwordHash;
-    private String nombre;
+    private String name;
     private String profileIcon;
     @OneToMany(mappedBy = "entrenador")
     private List<Rutina> rutinas;
@@ -58,8 +58,8 @@ public class Entrenador {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String nombre) {
+        this.name = nombre;
     }
 
 
