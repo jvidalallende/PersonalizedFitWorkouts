@@ -62,6 +62,9 @@
             <a href="/registro.html">Registro </a>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="hidden" name="_csrf"
+               value="{{token}}" />
+
     </form>
     {{#error}}
     <br>

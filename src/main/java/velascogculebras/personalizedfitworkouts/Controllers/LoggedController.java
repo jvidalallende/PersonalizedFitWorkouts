@@ -9,14 +9,7 @@ import velascogculebras.personalizedfitworkouts.Configuration.UserRepositoryAuth
 
 @Controller
 public class LoggedController {
-    @Autowired
-    private UserRepositoryAuthenticationProvider userRepositoryAuthenticationProvider;
 
-    @RequestMapping("/Logged")
-    private String logged(Model model, @RequestParam String mail, @RequestParam String password){
-
-        return "/";
-    }
 
     @RequestMapping("/login")
     private String login() {
