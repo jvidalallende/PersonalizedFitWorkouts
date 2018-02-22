@@ -38,18 +38,52 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">login</a></li>
+                {{#logged}}
+                {{#profileIcon}}
+                <li><img src="{{profileIcon}}" height="50px" width="50px" class="img-circle">
+                    {{/profileIcon}}
+                    {{^profileIcon}}
+                <li><img src="/images/default-avatar.png" height="50px" width="50px" class="img-circle">
+                    {{/profileIcon}}
+                    <strong>{{name}}</strong></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Ajustes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/miPerfil">Mi perfil</a></li>
+                        <li><a href="/favoritos">Mis rutinas favoritas</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <div style="float: right;margin-right: 5px">
+                                <form action="/logout" method="post">
+                                    <input type="hidden" name="_csrf" value="{{token}}">
+                                    <input type="submit" value="Sign Out" class="btn btn-default" align="right">
+                                </form>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </li>
+                {{/logged}}
+                {{^logged}}
+                <li><a href="/login.html">login </a></li>
+                {{/logged}}
 
             </ul>
         </div>
     </nav>
     <div class="col-md-9 col-md-offset-1">
         <div class="col-md-12" style="border: 1px solid lightgrey;">
-            <h3 style="text-align: center">Mi perfil <small>Añade información personal para compartir tu perfil</small></h3>
+            <h3 style="text-align: center">Mi perfil
+                <small>Añade información personal para compartir tu perfil</small>
+            </h3>
         </div>
 
         <form name="modifyProfile" id="ProfileForm" novalidate>
-            <div class="col-md-12" style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
+            <div class="col-md-12"
+                 style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
                 {{#user}}
                 <div class="col-md-8 col-md-offset-2">
                     {{#profileIcon}}
@@ -63,15 +97,18 @@
                         <div class="controls">
                             <br>
                             <label>Información básica</label>
-                            <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                            <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                  title="" data-content="">
                                 <input type="text" class="form-control" id="txtName" placeholder="{{name}}">
                             </span>
                             <br>
-                            <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                            <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                  title="" data-content="">
                                 <input type="text" class="form-control" id="txtSurName" placeholder="{{passwordHash}}">
                             </span>
                             <br>
-                            <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                            <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                  title="" data-content="">
                                 <input type="text" class="form-control" id="txtmail" placeholder="{{mail}}">
                             </span>
                             <p class="help-block"></p>
@@ -83,5 +120,11 @@
         </form>
     </div>
 </div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -63,22 +63,22 @@
                 <small>{{date}}</small>
             </div>
             <a href="/secRutina?rutinaId={{id}}">
-            <table class="table table-bordered table-condensed">
-                <tr>
-                    <th><p class="text-center">#</p></th>
-                    <th><p class="text-center">Ejercicio</p></th>
-                    <th><p class="text-center">Series</p></th>
-                    <th><p class="text-center">Repeticiones</p></th>
-                </tr>
-                {{#ejercicios}}
-                <tr>
-                    <th><p class="text-center">{{-index}}</p></th>
-                    <th><p class="text-center">{{nombre}}</p></th>
-                    <th><p class="text-center">{{series}}</p></th>
-                    <th><p class="text-center">{{repeticiones}}</p></th>
-                </tr>
-                {{/ejercicios}}
-            </table>
+                <table class="table table-bordered table-condensed">
+                    <tr>
+                        <th><p class="text-center">#</p></th>
+                        <th><p class="text-center">Ejercicio</p></th>
+                        <th><p class="text-center">Series</p></th>
+                        <th><p class="text-center">Repeticiones</p></th>
+                    </tr>
+                    {{#ejercicios}}
+                    <tr>
+                        <th><p class="text-center">{{-index}}</p></th>
+                        <th><p class="text-center">{{nombre}}</p></th>
+                        <th><p class="text-center">{{series}}</p></th>
+                        <th><p class="text-center">{{repeticiones}}</p></th>
+                    </tr>
+                    {{/ejercicios}}
+                </table>
             </a>
             {{#user}}
             <!-- Preguntar como hacer if -->
@@ -101,9 +101,11 @@
 </div>
 
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>

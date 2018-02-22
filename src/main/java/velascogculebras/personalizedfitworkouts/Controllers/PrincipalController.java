@@ -13,6 +13,7 @@ import velascogculebras.personalizedfitworkouts.Repositories.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +90,7 @@ public class PrincipalController {
         entrenador1.setName("pepe");
         entrenador1.setPasswordHash(encoder.encode("pepe"));
         entrenador1.setMail("pepe@gmail.com");
+
         entrenadorRepository.save(entrenador1);
 
         Comentario comentario = new Comentario();
@@ -100,18 +102,8 @@ public class PrincipalController {
     }
 
     @RequestMapping("/")
-    private String getIndex(Model model, HttpServletRequest request) {
-        Principal user = request.getUserPrincipal();
-        if (user != null) {
-            Usuario usuario = usuarioReporsitory.findByMail(user.getName());
-            if (usuario == null) {
-                Entrenador entrenador = entrenadorRepository.findByMail(user.getName());
-                model.addAttribute("logged", entrenador);
-            } else {
-                model.addAttribute("logged", usuario);
-            }
-
-        }
+    private String getIndex(Model model, HttpSession session) {
+        model.addAttribute("logged", session.getAttribute("user"));
         model.addAttribute("entrenador", entrenadorRepository.findAll());
         Pageable first5 = new PageRequest(0, 5, Sort.Direction.ASC, "date");
         model.addAttribute("Rutinas", rutinaRepository.findAll(first5));

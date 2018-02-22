@@ -93,33 +93,39 @@
 
             <span>{{descripcion}}</span>
         </div>
-</div>
+    </div>
     {{/Rutinas}}
     <hr>
     <h2>Comentarios</h2>
 
 
     {{#comentarios}}
-<div class="card card-1">
-    <div class="autorHeader">
-        {{#user}}
-        {{#profileIcon}}
-        <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
-        {{/profileIcon}}
-        {{^profileIcon}}
-        <img src="images/default-avatar.png" height="60px" width="60px" class="img-circle profile-icon">
-        {{/profileIcon}}
-        <span class="autorName"> {{name}}</span>
-        {{/user}}
+    <div class="card card-1">
+        <div class="autorHeader">
+            {{#user}}
+            {{#profileIcon}}
+            <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
+            {{/profileIcon}}
+            {{^profileIcon}}
+            <img src="images/default-avatar.png" height="60px" width="60px" class="img-circle profile-icon">
+            {{/profileIcon}}
+            <span class="autorName"> {{name}}</span>
+            {{/user}}
+        </div>
+        <hr style="border-color: #333333">
+        <p>{{comentario}}</p>
+        <p class="text-right" style="margin-bottom: 0">
+            <small>{{date}}</small>
+        </p>
     </div>
-    <hr style="border-color: #333333">
-    <p>{{comentario}}</p>
-    <p class="text-right" style="margin-bottom: 0">
-        <small>{{date}}</small>
-    </p>
-</div>
     {{/comentarios}}
 
 </div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,8 @@ public class Usuario {
     private List<Comentario> comentarios;
 
     public Usuario() {
+        roles = new ArrayList<>();
+        roles.add("ROLE_USER");
     }
 
     public String getPasswordHash() {
@@ -46,6 +49,14 @@ public class Usuario {
 
     public List<Rutina> getRutinasFav() {
         return rutinasFav;
+    }
+
+    public void add_role(String role) {
+        if (roles == null) {
+            roles = new ArrayList<>();
+        }
+
+        roles.add(role);
     }
 
     public void setRutinasFav(List<Rutina> rutinasFav) {

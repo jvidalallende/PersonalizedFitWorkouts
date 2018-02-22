@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import velascogculebras.personalizedfitworkouts.Entities.Categoria;
 
 @Repository
-public interface CategoriaRepository extends JpaRepository<Categoria,Long> {
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 }
