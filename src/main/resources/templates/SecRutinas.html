@@ -111,13 +111,15 @@
                     {{/ejercicios}}
                 </table>
             </a>
-            {{#user}}
+            {{#logged}}
             <!-- Preguntar como hacer if -->
             <div align="right">
-                <a href="/addFav?userId={{id}}&rutinaId{{..id}}" class="btn btn-default"><span
-                        class="star glyphicon glyphicon-star"></span> Default text here</a>
+                {{#fav.-index}}
+                <a href="/addFav?&rutinaId{{id}}"><span
+                        class="star glyphicon glyphicon-star"></span></a>
+                {{/fav.-index}}
             </div>
-            {{/user}}
+            {{/logged}}
             <strong>Categorias:</strong>
             {{#categorias}}
             <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>

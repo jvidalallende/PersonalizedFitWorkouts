@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import velascogculebras.personalizedfitworkouts.Entities.Categoria;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
+import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.CategoriaRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,18 +24,28 @@ public class SecRutinasController {
     private CategoriaRepository categoriaRepository;
 
     @RequestMapping("/secRutinas")
-    public String getRutines(Model model) {
+    public String getRutines(Model model, HttpSession session) {
         Sort sort = new Sort(Sort.Direction.ASC, "date");
         List<Rutina> rutinas = rutinaRepository.findAll(sort);
         model.addAttribute("Rutinas", rutinas);
+        Usuario usuario = (Usuario) session.getAttribute("user");
+        if (usuario != null) {
+            List<Boolean> fav = new ArrayList<>(rutinas.size());
+            for (Rutina rutina : rutinas) {
+                fav.add(usuario.getRutinasFav().contains(rutina));
+            }
+            model.addAttribute("logged", session.getAttribute("user"));
+        }
+
         return "SecRutinas";
     }
 
     @RequestMapping("/secRutinas/filter")
-    public String getRutinesByCategoria(Model model, @RequestParam long categoriaId) {
+    public String getRutinesByCategoria(Model model, HttpSession session, @RequestParam long categoriaId) {
         Categoria categoria = categoriaRepository.findOne(categoriaId);
         List<Rutina> rutinas = categoria.getRutinas();
         model.addAttribute("Rutinas", rutinas);
+        model.addAttribute("logged", session.getAttribute("user"));
         return "SecRutinas";
     }
 

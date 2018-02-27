@@ -7,13 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SecEntrenadorController {
     @Autowired
     private EntrenadorRepository entrenadorRepository;
 
     @RequestMapping("/secEntrenador")
-    private String getEntrenador(Model model, long id) {
+    private String getEntrenador(Model model, HttpSession session, long id) {
+        model.addAttribute("logged", session.getAttribute("user"));
         Entrenador entrenador = entrenadorRepository.findOne(id);
         model.addAttribute("entrenador", entrenador);
         model.addAttribute("Rutinas", entrenador.getRutinas());
