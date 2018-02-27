@@ -41,7 +41,38 @@
 
 
             <ul class="nav navbar-nav navbar-right">
+                {{#logged}}
+                {{#profileIcon}}
+                <li><img src="{{profileIcon}}" height="50px" width="50px" class="img-circle">
+                    {{/profileIcon}}
+                    {{^profileIcon}}
+                <li><img src="/images/default-avatar.png" height="50px" width="50px" class="img-circle">
+                    {{/profileIcon}}
+                    <strong>{{name}}</strong></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Ajustes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/miPerfil">Mi perfil</a></li>
+                        <li><a href="/favoritos">Mis rutinas favoritas</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <div style="float: right;margin-right: 5px">
+                                <form action="/logout" method="post">
+                                    <input type="hidden" name="_csrf" value="{{token}}">
+                                    <input type="submit" value="Sign Out" class="btn btn-default" align="right">
+                                </form>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </li>
+                {{/logged}}
+                {{^logged}}
                 <li><a href="/login">login</a></li>
+                {{/logged}}
 
             </ul>
         </div>
