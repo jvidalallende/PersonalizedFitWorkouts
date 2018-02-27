@@ -87,30 +87,120 @@
                     {{^profileIcon}}
                     <img src="/images/default-avatar.png" height="100px" width="100px" class="img-circle">
                     {{/profileIcon}}
+                    <form action="/rutinaForm" method="GET">
                     <div class="control-group form-group">
-
                         <div class="controls">
-                            <br>
-                            <label>Nombre</label>
-                            <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right"
-                                  title="" data-content="">
-                                <input type="text" class="form-control" id="txtName" >
-                            </span>
-                            <br>
-                            <label>Ejercicio</label>
-                            <span id="alertEjercicio" data-toggle="popover" data-trigger="hover" data-placement="right"
-                                  title="" data-content="">
-                                <input type="text" class="form-control" id="txtEjercicio" >
-                            </span>
-                            <br>
-                            <label>Repeticiones</label>
-                            <span id="alertRepeticiones" data-toggle="popover" data-trigger="hover" data-placement="right"
-                                  title="" data-content="">
-                                <input type="text" class="form-control" id="txtmail">
-                            </span>
-                            <p class="help-block"></p>
+                                <br>
+                                <table class="table table-bordered table-condensed">
+                                    <tr>
+                                        <th><p class="text-center"><label>Nombre</label>
+                                            <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtName" name="name">
+                                            </span></p>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        </th>
+                                        <th><p class="text-center">Ejercicio</p>
+                                            <span id="alertEjercicio" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtEjercicio" name="e1">
+                                            </span>
+                                        </th>
+                                        <th><p class="text-center">Series</p>
+                                            <span id="alertSeries" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtSeries" name="s1">
+                                            </span>
+                                        </th>
+                                        <th><p class="text-center">Repeticiones</p>
+                                            <span id="alertRepeticiones" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtmail" name="r1">
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </table>
+
+                            <table class="table table-bordered table-condensed">
+                                <tr>
+                                    <th><p class="text-center">Ejercicio</p>
+                                        <span id="alertEjercicio1" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtEjercicio1" name="e2">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Series</p>
+                                        <span id="alertSeries1" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtSeries1" name="s3">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Repeticiones</p>
+                                        <span id="alertRepeticiones1" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtRepeticiones1" name="r3">
+                                            </span>
+                                    </th>
+                                </tr>
+                            </table>
+
+                            <table class="table table-bordered table-condensed">
+                                <tr>
+                                    <th><p class="text-center">Ejercicio</p>
+                                        <span id="alertEjercicio2" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtEjercicio2" name="e4">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Series</p>
+                                        <span id="alertSeries2" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtSeries2" name="s4">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Repeticiones</p>
+                                        <span id="alertRepeticiones2" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtRepeticiones2" name="r4">
+                                            </span>
+                                    </th>
+                                </tr>
+                            </table>
+
+                            <table class="table table-bordered table-condensed">
+                                <tr>
+                                    <th><p class="text-center">Ejercicio</p>
+                                        <span id="alertEjercicio3" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtEjercicio3" name="e5">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Series</p>
+                                        <span id="alertSeries3" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtSeries3" name="s5">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Repeticiones</p>
+                                        <span id="alertRepeticiones3" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtRepeticiones3" name="r5">
+                                            </span>
+                                    </th>
+                                </tr>
+                            </table>
+
+                            <table class="table table-bordered table-condensed">
+                                <tr>
+                                    <th><p class="text-center">Ejercicio</p>
+                                        <span id="alertEjercicio4" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtEjercicio4">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Series</p>
+                                        <span id="alertSeries4" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtSeries4">
+                                            </span>
+                                    </th>
+                                    <th><p class="text-center">Repeticiones</p>
+                                        <span id="alertRepeticiones4" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                            <input type="text" class="form-control" id="txtRepeticiones4">
+                                            </span>
+                                    </th>
+                                </tr>
+                            </table>
                         </div>
                     </div>
+                    </form>
                     {{/trainer}}
                     <div class="control-group form-group">
                         <div class="control">
@@ -119,6 +209,9 @@
                                   title="" data-content="">
                                 <textarea rows="6" cols="30" class="form-control" id="descripcion" required
                                           maxlenght="999" style="resize:none"></textarea>
+                                <form action="/">
+                                    <input type="submit" value="Crear"/>
+                                </form>
                             </span>
 
                             <br>
