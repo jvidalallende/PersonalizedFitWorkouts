@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Rutina</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1> Personalized Fit Workouts
+        <small> PFW</small>
+    </h1>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- El logotipo y el icono que despliega el menú se agrupan
+             para mostrarlos mejor en los dispositivos móviles -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Desplegar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">PFW</a>
+        </div>
+
+        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+             otro elemento que se pueda ocultar al minimizar la barra -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/secEntrenadores">Entrenadores</a></li>
+                <li><a href="/secRutinas"> Rutinas</a></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                {{#logged}}
+                {{#profileIcon}}
+                <li><img src="{{profileIcon}}" height="50px" width="50px" class="img-circle">
+                    {{/profileIcon}}
+                    {{^profileIcon}}
+                <li><img src="/images/default-avatar.png" height="50px" width="50px" class="img-circle">
+                    {{/profileIcon}}
+                    <strong>{{name}}</strong></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Ajustes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/miPerfil">Mi perfil</a></li>
+                        <li><a href="/favoritos">Mis rutinas favoritas</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <div style="float: right;margin-right: 5px">
+                                <form action="/logout" method="post">
+                                    <input type="hidden" name="_csrf" value="{{token}}">
+                                    <input type="submit" value="Sign Out" class="btn btn-default" align="right">
+                                </form>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </li>
+                {{/logged}}
+                {{^logged}}
+                <li><a href="/login.html">login </a></li>
+                {{/logged}}
+
+            </ul>
+        </div>
+    </nav>
+    <div class="col-md-9 col-md-offset-1">
+        <div class="col-md-12" style="border-width:1px 1px 1x 1px; border-style: solid; border-color: lightgrey;">
+            <h3 style="text-align: center">Nueva Rutina</h3>
+        </div>
+        <form name="modifyProfile" id="ProfileForm" novalidate>
+            <div class="col-md-12"
+                 style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
+                <div class="col-md-8 col-md-offset-2">
+                    {{#trainer}}
+                    {{#profileIcon}}
+                    <img src="{{profileIcon}}" height="100px" width="100px" class="img-circle">
+                    {{/profileIcon}}
+                    {{^profileIcon}}
+                    <img src="/images/default-avatar.png" height="100px" width="100px" class="img-circle">
+                    {{/profileIcon}}
+                    <div class="control-group form-group">
+
+                        <div class="controls">
+                            <br>
+                            <label>Nombre</label>
+                            <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                  title="" data-content="">
+                                <input type="text" class="form-control" id="txtName" >
+                            </span>
+                            <br>
+                            <label>Ejercicio</label>
+                            <span id="alertEjercicio" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                  title="" data-content="">
+                                <input type="text" class="form-control" id="txtEjercicio" >
+                            </span>
+                            <br>
+                            <label>Repeticiones</label>
+                            <span id="alertRepeticiones" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                  title="" data-content="">
+                                <input type="text" class="form-control" id="txtmail">
+                            </span>
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    {{/trainer}}
+                    <div class="control-group form-group">
+                        <div class="control">
+                            <label>Descripción</label>
+                            <span id="alertBiography" data-toggle="popover" data-trigger="hover" data-placement="auto"
+                                  title="" data-content="">
+                                <textarea rows="6" cols="30" class="form-control" id="descripcion" required
+                                          maxlenght="999" style="resize:none"></textarea>
+                            </span>
+
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

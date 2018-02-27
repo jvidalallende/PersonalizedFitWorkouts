@@ -11,17 +11,17 @@ import javax.servlet.http.HttpSession;
 public class ProfileController {
 
     @GetMapping("/miPerfil")
-    public String getPerfil(Model model, HttpServletRequest request, HttpSession session) {
+public String getPerfil(Model model, HttpServletRequest request, HttpSession session) {
 
-        model.addAttribute("logged", session.getAttribute("user"));
-        if (request.isUserInRole("ROLE_TRAINER")) {
-            model.addAttribute("trainer", session.getAttribute("user"));
-            return "Entrenador";
-        } else if (request.isUserInRole("ROLE_USER")) {
-            model.addAttribute("user", session.getAttribute("user"));
-            return "Usuario";
-        }
-
-        return "error";
+    model.addAttribute("logged", session.getAttribute("user"));
+    if (request.isUserInRole("ROLE_TRAINER")) {
+        model.addAttribute("trainer", session.getAttribute("user"));
+        return "Entrenador";
+    } else if (request.isUserInRole("ROLE_USER")) {
+        model.addAttribute("user", session.getAttribute("user"));
+        return "Usuario";
     }
+
+    return "error";
+}
 }
