@@ -8,19 +8,47 @@ import java.util.List;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    protected long id;
     @Column(unique = true)
-    private String mail;
-    private String name;
+    protected String mail;
+    protected String name;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
-    private String passwordHash;
-    private String profileIcon;
+    protected List<String> roles;
+    protected String passwordHash;
+    protected String profileIcon;
     @OneToMany
-    private List<Rutina> rutinasFav;
+    protected List<Rutina> rutinasFav;
     @OneToMany(mappedBy = "user")
-    private List<Comentario> comentarios;
+    protected List<Comentario> comentarios;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public String getProfileIcon() {
+        return profileIcon;
+    }
+
+    public void setProfileIcon(String profileIcon) {
+        this.profileIcon = profileIcon;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 
     public Usuario() {
         roles = new ArrayList<>();
