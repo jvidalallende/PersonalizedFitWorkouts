@@ -18,6 +18,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/secRutinas").permitAll();
+        http.authorizeRequests().antMatchers("/registro").permitAll();
+        http.authorizeRequests().antMatchers("/register").permitAll();
         http.authorizeRequests().antMatchers("/secEntrenadores").permitAll();
         http.authorizeRequests().antMatchers("/secRutina").permitAll();
         http.authorizeRequests().antMatchers("/secEntrenador").permitAll();
@@ -27,6 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers("/user").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/trainer").hasAnyRole("ADMIN");
+
 
 
         http.authorizeRequests().anyRequest().authenticated();

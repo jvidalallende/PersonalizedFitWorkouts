@@ -6,4 +6,5 @@ import velascogculebras.personalizedfitworkouts.Entities.Categoria;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
+    Categoria findByNombre(String nombre);
 }
