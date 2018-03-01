@@ -1,5 +1,6 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -8,13 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import velascogculebras.personalizedfitworkouts.Entities.Categoria;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
+import velascogculebras.personalizedfitworkouts.Entities.RutinaFav;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.CategoriaRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SecRutinasController {
@@ -27,14 +31,18 @@ public class SecRutinasController {
     public String getRutines(Model model, HttpSession session) {
         Sort sort = new Sort(Sort.Direction.ASC, "date");
         List<Rutina> rutinas = rutinaRepository.findAll(sort);
-        model.addAttribute("Rutinas", rutinas);
+
         Usuario usuario = (Usuario) session.getAttribute("user");
         if (usuario != null) {
-            List<Boolean> fav = new ArrayList<>(rutinas.size());
+            List<Rutina> rutinasFav = new ArrayList<>(rutinas.size());
             for (Rutina rutina : rutinas) {
-                fav.add(usuario.getRutinasFav().contains(rutina));
+                boolean fav = usuario.getRutinasFav().contains(rutina);
+                rutinasFav.add(new RutinaFav(rutina, fav));
             }
+            model.addAttribute("Rutinas", rutinasFav);
             model.addAttribute("logged", session.getAttribute("user"));
+        } else {
+            model.addAttribute("Rutinas", rutinas);
         }
 
         return "SecRutinas";

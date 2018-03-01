@@ -1,5 +1,8 @@
 package velascogculebras.personalizedfitworkouts.Entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +20,8 @@ public class Usuario {
     protected List<String> roles;
     protected String passwordHash;
     protected String profileIcon;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     protected List<Rutina> rutinasFav;
     @OneToMany(mappedBy = "user")
     protected List<Comentario> comentarios;

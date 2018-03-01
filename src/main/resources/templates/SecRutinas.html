@@ -93,7 +93,7 @@
                 <strong>{{nombre}}</strong>
                 <small>{{date}}</small>
             </div>
-            <a href="/secRutina?rutinaId={{id}}">
+            <a href="/secRutina?rutinaId={{rutinaId}}">
                 <table class="table table-bordered table-condensed">
                     <tr>
                         <th><p class="text-center">#</p></th>
@@ -114,10 +114,14 @@
             {{#logged}}
             <!-- Preguntar como hacer if -->
             <div align="right">
-                {{#fav.-index}}
-                <a href="/addFav?&rutinaId{{id}}"><span
+                {{#fav}}
+                <a href="/addFav?&rutinaId={{rutinaId}}"><span
                         class="star glyphicon glyphicon-star"></span></a>
-                {{/fav.-index}}
+                {{/fav}}
+                {{^fav}}
+                <a href="/addFav?&rutinaId={{rutinaId}}"><span
+                        class="star glyphicon glyphicon-star-empty"></span></a>
+                {{/fav}}
             </div>
             {{/logged}}
             <strong>Categorias:</strong>
