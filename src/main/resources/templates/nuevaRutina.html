@@ -76,7 +76,6 @@
         <div class="col-md-12" style="border-width:1px 1px 1x 1px; border-style: solid; border-color: lightgrey;">
             <h3 style="text-align: center">Nueva Rutina</h3>
         </div>
-        <form name="modifyProfile" id="ProfileForm" novalidate>
             <div class="col-md-12"
                  style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
                 <div class="col-md-8 col-md-offset-2">
@@ -87,7 +86,7 @@
                     {{^profileIcon}}
                     <img src="/images/default-avatar.png" height="100px" width="100px" class="img-circle">
                     {{/profileIcon}}
-                    <form action="/rutinaForm" method="GET">
+                    <form action="/rutinaForm" method="post">
                     <div class="control-group form-group">
                         <div class="controls">
                                 <br>
@@ -205,7 +204,6 @@
                             </table>
                         </div>
                     </div>
-                    </form>
                     {{/trainer}}
                     <div class="control-group form-group">
                         <div class="control">
@@ -214,17 +212,16 @@
                                   title="" data-content="">
                                 <textarea rows="6" cols="30" class="form-control" id="descripcion" required
                                           maxlenght="999" style="resize:none" name="desc"></textarea>
-                                <form action="/">
-                                    <input type="submit" value="Crear"/>
-                                </form>
+                                <button type="submit">Crear</button>
+                                <input type="hidden" name="_csrf" value="{{token}}">
                             </span>
 
                             <br>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
-        </form>
     </div>
 </div>
 
