@@ -1,5 +1,8 @@
 package velascogculebras.personalizedfitworkouts.Entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,9 +21,11 @@ public class Rutina {
     private Entrenador entrenador;
     private Date date;
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Ejercicio> ejercicios;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Categoria> categorias;
 
     public Rutina(Rutina rutina) {
