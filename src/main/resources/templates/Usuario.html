@@ -52,7 +52,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/miPerfil">Mi perfil</a></li>
                         <li><a href="/favoritos">Mis rutinas favoritas</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="/nuevaRutina">Añadir Rutina</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <div style="float: right;margin-right: 5px">
@@ -81,7 +81,7 @@
             </h3>
         </div>
 
-        <form name="modifyProfile" id="ProfileForm" novalidate>
+        <form name="modifyProfile" id="ProfileForm" novalidate method="post" action="/modifyUserProfile">
             <div class="col-md-12"
                  style="border-width:1px 1px 1px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
                 {{#user}}
@@ -92,6 +92,10 @@
                     {{^profileIcon}}
                     <img src="/images/default-avatar.png" height="100px" width="100px" class="img-circle">
                     {{/profileIcon}}
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                    </div>
 
                     <div class="control-group form-group">
                         <div class="controls">
@@ -99,19 +103,25 @@
                             <label>Información básica</label>
                             <span id="alertname" data-toggle="popover" data-trigger="hover" data-placement="right"
                                   title="" data-content="">
-                                <input type="text" class="form-control" id="txtName" placeholder="{{name}}">
+                                <input type="text" name="name" class="form-control" id="txtName" placeholder="{{name}}">
                             </span>
                             <br>
-                            <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right"
+                            <span id="alertPassword" data-toggle="popover" data-trigger="hover" data-placement="right"
                                   title="" data-content="">
-                                <input type="text" class="form-control" id="txtSurName" placeholder="{{passwordHash}}">
+                                <input type="text" name="passwordHash" class="form-control" id="txtSurName" placeholder="{{passwordHash}}">
                             </span>
                             <br>
                             <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right"
                                   title="" data-content="">
-                                <input type="text" class="form-control" id="txtmail" placeholder="{{mail}}">
+                                <input type="text" name="email" class="form-control" id="txtmail" placeholder="{{mail}}">
                             </span>
                             <p class="help-block"></p>
+                            <div align="right">
+                                <button type="submit" class="btn btn-default" style="margin-right: 1rem;">Modificar</button>
+                                <a href="/login">Volver</a>
+                                <input type="hidden" name="_csrf"
+                                       value="{{token}}"/>
+                            </div>
                         </div>
                         {{/user}}
                     </div>
