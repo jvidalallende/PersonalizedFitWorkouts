@@ -9,7 +9,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Configuration
 public class CSRFHandlerConfiguration extends WebMvcConfigurerAdapter {
@@ -26,9 +25,10 @@ class CSRFHandlerInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(final HttpServletRequest request,
                            final HttpServletResponse response, final Object handler,
                            final ModelAndView modelAndView) throws Exception {
-
-        CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-        modelAndView.addObject("token", token.getToken());
+        if (modelAndView != null) {
+            CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+            modelAndView.addObject("token", token.getToken());
+        }
 
 
     }
