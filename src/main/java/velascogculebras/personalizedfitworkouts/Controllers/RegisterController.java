@@ -18,20 +18,20 @@ public class RegisterController {
     private UsuarioReporsitory usuarioReporsitory;
 
     @RequestMapping("/register")
-    private String reqister(Model model, @RequestParam String nombre, @RequestParam String password, @RequestParam String type, @RequestParam String email) {
+    private String reqister(Model model, @RequestParam String nombre, @RequestParam String passwordHash, @RequestParam String type, @RequestParam String email) {
         if (entrenadorRepository.findByMail(email) == null && usuarioReporsitory.findByMail(email) == null) {
 
             if (type.equals("Usuario")) {
                 Usuario usuario = new Usuario();
                 usuario.setMail(email);
                 usuario.setName(nombre);
-                usuario.setPasswordHash(password);
+                usuario.setPasswordHash(passwordHash);
                 usuarioReporsitory.save(usuario);
             } else if (type.equals("Entrenador")) {
                 Entrenador entrenador = new Entrenador();
                 entrenador.setName(nombre);
                 entrenador.setMail(email);
-                entrenador.setPasswordHash(password);
+                entrenador.setPasswordHash(passwordHash);
                 entrenadorRepository.save(entrenador);
             }
 
