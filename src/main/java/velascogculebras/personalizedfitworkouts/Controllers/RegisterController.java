@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +21,18 @@ public class RegisterController {
     @RequestMapping("/register")
     private String reqister(Model model, @RequestParam String nombre, @RequestParam String passwordHash, @RequestParam String type, @RequestParam String email) {
         if (entrenadorRepository.findByMail(email) == null && usuarioReporsitory.findByMail(email) == null) {
-
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             if (type.equals("Usuario")) {
                 Usuario usuario = new Usuario();
                 usuario.setMail(email);
                 usuario.setName(nombre);
-                usuario.setPasswordHash(passwordHash);
+                usuario.setPasswordHash(passwordEncoder.encode(passwordHash));
                 usuarioReporsitory.save(usuario);
             } else if (type.equals("Entrenador")) {
                 Entrenador entrenador = new Entrenador();
                 entrenador.setName(nombre);
                 entrenador.setMail(email);
-                entrenador.setPasswordHash(passwordHash);
+                entrenador.setPasswordHash(passwordEncoder.encode(passwordHash));
                 entrenadorRepository.save(entrenador);
             }
 
