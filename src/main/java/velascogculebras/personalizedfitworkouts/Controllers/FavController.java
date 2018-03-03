@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
 import velascogculebras.personalizedfitworkouts.Entities.RutinaFav;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
@@ -31,17 +30,5 @@ public class FavController {
         return "secRutinas";
     }
 
-    @RequestMapping("/addFav")
-    public String addToFav(long rutinaId, HttpSession session) {
-        Usuario usuario = (Usuario) session.getAttribute("user");
-        Rutina rutina = rutinaRepository.findOne(rutinaId);
-        if (usuario.getRutinasFav().contains(rutina)) {
-            usuario.getRutinasFav().remove(rutina);
-        } else {
-            usuario.getRutinasFav().add(rutina);
-        }
-
-        return "redirect:/secRutinas";
-    }
 
 }

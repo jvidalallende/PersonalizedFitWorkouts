@@ -115,12 +115,10 @@
             <!-- Preguntar como hacer if -->
             <div align="right">
                 {{#fav}}
-                <a href="/addFav?&rutinaId={{rutinaId}}"><span
-                        class="star glyphicon glyphicon-star"></span></a>
+                <span rutinaId="{{rutinaId}}" class="star glyphicon glyphicon-star"></span>
                 {{/fav}}
                 {{^fav}}
-                <a href="/addFav?&rutinaId={{rutinaId}}"><span
-                        class="star glyphicon glyphicon-star-empty"></span></a>
+                <span rutinaId="{{rutinaId}}" class="star glyphicon glyphicon-star-empty"></span>
                 {{/fav}}
             </div>
             {{/logged}}
@@ -143,6 +141,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/favScript.js"></script>
 
 </body>
 </html>
