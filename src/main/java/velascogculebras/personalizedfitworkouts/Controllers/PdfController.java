@@ -9,21 +9,27 @@ import org.springframework.web.client.RestTemplate;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
 import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 @Controller
 public class PdfController {
-    private static final String url = "localhost:8080/getPdf/";
+    private static final String url = "http://localhost:8080/getPdf/";
     @Autowired
     public RutinaRepository rutinaRepository;
 
     @GetMapping("pdf")
-    public String getPdf(@RequestParam long rutinaId) {
+    public void getPdf(@RequestParam long rutinaId, HttpServletResponse response) throws IOException {
         Rutina rutina = rutinaRepository.getOne(rutinaId);
         RestTemplate restTemplate = new RestTemplate();
 
         ObjectNode data = restTemplate.getForObject(url + rutinaId, ObjectNode.class);
 
-        Byte[] bytes = data.
-
-
+        byte[] bytes = data.get("file").binaryValue();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bos.write(bytes);
+        bos.writeTo(response.getOutputStream());
+        response.flushBuffer();
     }
 }
