@@ -1,37 +1,40 @@
 package ivelascogculebras.pdfcreatormodule;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import ivelascogculebras.pdfcreatormodule.Entities.Ejercicio;
+import ivelascogculebras.pdfcreatormodule.Entities.Rutina;
+import ivelascogculebras.pdfcreatormodule.Repository.RutinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import velascogculebras.personalizedfitworkouts.Entities.Ejercicio;
-import velascogculebras.personalizedfitworkouts.Entities.Rutina;
-import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
 
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.stream.Stream;
 
 @RestController
 public class Controller {
     @Autowired
     public RutinaRepository rutinaRepository;
 
-    public static void generatePdf(Rutina rutina) throws DocumentException, FileNotFoundException {
+    private static ByteArrayOutputStream generatePdf(Rutina rutina) throws DocumentException {
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("iTextHelloWorld.pdf"));
-
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PdfWriter.getInstance(document, baos);
         document.open();
-        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        Chunk chunk = new Chunk("Hello World", font);
-        PdfPTable table = new PdfPTable(rutina.getEjercicios().size());
+        PdfPTable table = new PdfPTable(4);
+        addTableHeader(table);
         for (int i = 0; i < rutina.getEjercicios().size(); i++) {
             addEjercicio(table, rutina.getEjercicios().get(i), i);
         }
-
-        document.add(chunk);
+        document.add(table);
         document.close();
+        return baos;
     }
 
     private static void addEjercicio(PdfPTable table, Ejercicio ejercicio, int i) {
@@ -41,10 +44,22 @@ public class Controller {
         table.addCell(ejercicio.getRepeticiones());
     }
 
-    @GetMapping("/getPdf")
-    public void getPdf(@RequestParam long rutinaId) throws FileNotFoundException, DocumentException {
-        Rutina rutina = rutinaRepository.getOne(rutinaId);
-        generatePdf(rutina);
+    private static void addTableHeader(PdfPTable table) {
+        Stream.of("#", "Nombre", "Series", "Repeticiones")
+                .forEach(columnTitle -> {
+                    PdfPCell header = new PdfPCell();
+                    header.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    header.setBorderWidth(1);
+                    header.setPhrase(new Phrase(columnTitle));
+                    table.addCell(header);
+                });
     }
+
+    @GetMapping("/getPdf/{rutinaId}")
+    public byte[] getPdf(@PathVariable long rutinaId) throws FileNotFoundException, DocumentException {
+        Rutina rutina = rutinaRepository.getOne(rutinaId);
+        return generatePdf(rutina).toByteArray();
+    }
+
 
 }
