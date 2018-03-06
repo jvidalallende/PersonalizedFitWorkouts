@@ -100,4 +100,8 @@ public class Rutina {
     public void setEjercicios(List<Ejercicio> ejercicios) {
         this.ejercicios = ejercicios;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }
