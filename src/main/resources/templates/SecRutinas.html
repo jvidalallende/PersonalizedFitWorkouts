@@ -111,17 +111,19 @@
                     {{/ejercicios}}
                 </table>
             </a>
-            {{#logged}}
-            <!-- Preguntar como hacer if -->
             <div align="right">
+                <a href="/pdf?rutinaId={{rutinaId}}"> <span class="glyphicon glyphicon-file"
+                                                            style="font-size: 25px;"></span></a>
+                {{#logged}}
                 {{#fav}}
                 <span rutinaId="{{rutinaId}}" class="star glyphicon glyphicon-star"></span>
                 {{/fav}}
                 {{^fav}}
                 <span rutinaId="{{rutinaId}}" class="star glyphicon glyphicon-star-empty"></span>
                 {{/fav}}
+                {{/logged}}
             </div>
-            {{/logged}}
+
             <strong>Categorias:</strong>
             {{#categorias}}
             <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
