@@ -54,7 +54,9 @@
                     <ul class="dropdown-menu">
                         <li><a href="/miPerfil">Mi perfil</a></li>
                         <li><a href="/favoritos">Mis rutinas favoritas</a></li>
+                        {{#isTrainer}}
                         <li><a href="/nuevaRutina">Añadir Rutina</a></li>
+                        {{/isTrainer}}
                         <li role="separator" class="divider"></li>
                         <li>
                             <div style="float: right;margin-right: 5px">

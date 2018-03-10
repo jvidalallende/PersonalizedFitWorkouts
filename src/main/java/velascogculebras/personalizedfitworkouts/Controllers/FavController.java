@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
 import velascogculebras.personalizedfitworkouts.Entities.RutinaFav;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
@@ -22,6 +23,7 @@ public class FavController {
     public String showFav(Model model, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("user");
         model.addAttribute("logged", usuario);
+        model.addAttribute("isTrainer", session.getAttribute("user") instanceof Entrenador);
         List<RutinaFav> rutinasFav = new ArrayList<>(usuario.getRutinasFav().size());
         for (Rutina rutina : usuario.getRutinasFav()) {
             rutinasFav.add(new RutinaFav(rutina, true));

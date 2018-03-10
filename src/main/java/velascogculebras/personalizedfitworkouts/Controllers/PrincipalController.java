@@ -12,6 +12,7 @@ import velascogculebras.personalizedfitworkouts.Entities.*;
 import velascogculebras.personalizedfitworkouts.Repositories.*;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,7 +101,7 @@ public class PrincipalController {
     }
 
     @RequestMapping("/")
-    private String getIndex(Model model, HttpSession session) {
+    private String getIndex(Model model, HttpSession session, HttpServletRequest request) {
         model.addAttribute("logged", session.getAttribute("user"));
         model.addAttribute("isTrainer", session.getAttribute("user") instanceof Entrenador);
         model.addAttribute("entrenador", entrenadorRepository.findAll());

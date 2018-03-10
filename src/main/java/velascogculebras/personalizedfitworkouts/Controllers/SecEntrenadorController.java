@@ -17,6 +17,8 @@ public class SecEntrenadorController {
     @RequestMapping("/secEntrenador")
     private String getEntrenador(Model model, HttpSession session, long id) {
         model.addAttribute("logged", session.getAttribute("user"));
+        model.addAttribute("isTrainer", session.getAttribute("user") instanceof Entrenador);
+
         Entrenador entrenador = entrenadorRepository.findOne(id);
         model.addAttribute("entrenador", entrenador);
         model.addAttribute("Rutinas", entrenador.getRutinas());

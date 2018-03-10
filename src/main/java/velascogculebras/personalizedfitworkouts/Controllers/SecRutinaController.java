@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import velascogculebras.personalizedfitworkouts.Entities.Comentario;
+import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.ComentarioRepository;
@@ -31,6 +32,8 @@ public class SecRutinaController {
         model.addAttribute("rutina", rutina);
         model.addAttribute("comentarios", comentarios);
         model.addAttribute("logged", session.getAttribute("user"));
+        model.addAttribute("isTrainer", session.getAttribute("user") instanceof Entrenador);
+
         return "secRutina";
 
     }
