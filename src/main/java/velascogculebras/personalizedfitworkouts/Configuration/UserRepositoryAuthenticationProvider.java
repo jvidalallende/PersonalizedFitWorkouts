@@ -10,7 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
@@ -30,25 +29,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         Usuario usuario = usuarioReporsitory.findByMail(authentication.getName());
-        if (usuario == null) {
-            Entrenador entrenador = entrenadorRepository.findByMail(authentication.getName());
-            if (entrenador == null) {
-                throw new BadCredentialsException("User not found");
-            }
-
-            String password = (String) authentication.getCredentials();
-            if (!new BCryptPasswordEncoder().matches(password, entrenador.getPasswordHash())) {
-                throw new BadCredentialsException("Password incorrect");
-            }
-
-            List<GrantedAuthority> roles = new ArrayList<>();
-            for (String role : entrenador.getRoles()) {
-                roles.add(new SimpleGrantedAuthority(role));
-            }
-            return new UsernamePasswordAuthenticationToken(entrenador.getMail(), password, roles);
-
-
-        } else {
+        if (usuario != null) {
             String password = (String) authentication.getCredentials();
             if (!new BCryptPasswordEncoder().matches(password, usuario.getPasswordHash())) {
                 throw new BadCredentialsException("Password incorrect");
@@ -59,7 +40,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
             }
             return new UsernamePasswordAuthenticationToken(usuario.getMail(), password, roles);
         }
-
+        throw new BadCredentialsException("Password incorrect");
     }
 
     @Override

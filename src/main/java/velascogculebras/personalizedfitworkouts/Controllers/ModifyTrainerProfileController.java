@@ -38,25 +38,28 @@ public class ModifyTrainerProfileController {
             trainer.setBiografia(bio);
             entrenadorRepository.save(trainer);
 
-            if (trainer.getProfileIcon() != null){
-                Resource res = new ClassPathResource("static"+trainer.getProfileIcon());
-                File file = res.getFile();
-                System.out.println(file.getAbsolutePath());
-                boolean status = file.delete();
-                if(status){
-                    System.out.println("Se ha eliminado");
-                }
-            }
+            if (!fileImage.getOriginalFilename().equals("")) {
 
-            String originalFilename = fileImage.getOriginalFilename();
-            String extension = originalFilename.substring(originalFilename.lastIndexOf('.'),originalFilename.length());
-            String newFilename = usuario.getId() +extension;
-            Resource res = new ClassPathResource("static/trainers/images"+newFilename);
-            File file = res.getFile();
-            file.createNewFile();
-            fileImage.transferTo(file);
-            trainer.setProfileIcon(newFilename);
-            entrenadorRepository.save(trainer);
+                if (trainer.getProfileIcon() != null) {
+                    Resource res = new ClassPathResource("static" + trainer.getProfileIcon());
+                    File file = res.getFile();
+                    System.out.println(file.getAbsolutePath());
+                    boolean status = file.delete();
+                    if (status) {
+                        System.out.println("Se ha eliminado");
+                    }
+                }
+
+                String originalFilename = fileImage.getOriginalFilename();
+                String extension = originalFilename.substring(originalFilename.lastIndexOf('.'), originalFilename.length());
+                String newFilename = usuario.getId() + extension;
+                Resource res = new ClassPathResource("static/trainers/images" + newFilename);
+                File file = res.getFile();
+                file.createNewFile();
+                fileImage.transferTo(file);
+                trainer.setProfileIcon(newFilename);
+                entrenadorRepository.save(trainer);
+            }
 
 
         }
