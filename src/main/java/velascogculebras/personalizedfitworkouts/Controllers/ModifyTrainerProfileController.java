@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +26,7 @@ public class ModifyTrainerProfileController {
 
     //Falta coger la imagen y cambiarla por la antigua
     @PostMapping("/modifyTrainerProfile")
-    private String saveProfile(HttpSession session, @RequestParam String name,
+    private String saveProfile(Model model, HttpSession session, @RequestParam String name,
                                @RequestParam String passwordHash, @RequestParam String email,
                                @RequestParam String bio, @RequestParam("fileImage") MultipartFile fileImage) throws IOException {
         Usuario usuario = (Usuario) session.getAttribute("user");
@@ -38,10 +39,13 @@ public class ModifyTrainerProfileController {
             entrenadorRepository.save(trainer);
 
             if (trainer.getProfileIcon() != null){
-                Resource res = new ClassPathResource("static/trainers/images"+trainer.getProfileIcon());
+                Resource res = new ClassPathResource("static"+trainer.getProfileIcon());
                 File file = res.getFile();
                 System.out.println(file.getAbsolutePath());
-                file.delete();
+                boolean status = file.delete();
+                if(status){
+                    System.out.println("Se ha eliminado");
+                }
             }
 
             String originalFilename = fileImage.getOriginalFilename();
