@@ -28,7 +28,7 @@ public class SecRutinaController {
     private String getComentarios(Model model, HttpSession session, @RequestParam long rutinaId) {
         Rutina rutina = rutinaRepository.findOne(rutinaId);
         List<Comentario> comentarios = comentarioRepository.findByRutinaOrderByDateAsc(rutina);
-        model.addAttribute("Rutinas", rutina);
+        model.addAttribute("rutina", rutina);
         model.addAttribute("comentarios", comentarios);
         model.addAttribute("logged", session.getAttribute("user"));
         return "secRutina";
