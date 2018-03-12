@@ -121,15 +121,32 @@ Dado que en el diagrama anterior no se mostraba la relación de repositorios y c
 
 **Instrucciones para el despliegue de la aplicación**:
 
-Suponiendo que disponemos de una VM(Máquina Virtual ubuntu server) y los archivos .jar de nuestra aplicación, el despliegue de la aplicación se desarrola de la siguiente forma:
-    1. Transferencia de archivos .jar a la VM:
+En primer lugar compilaremos la apliccacion, para ello es necesario maven y jdk8:
+ 1. Descargar los sources
+     ```sh
+     $ git clone https://github.com/sculebras1/PersonalizedFitWorkouts.git
+      ```
+ 2. Compilamos los sources
+     ```sh
+     $ cd PersonalizedFitWorkouts
+     $ mvn package
+     & cd pdfcreatormodule
+     $ mvn package
+     ```
+ A partir de este paso ya hemos generado los ficheros JAR de la aplicacion que se enceuntran en target y pdfcreatormodule/target
+ 
+ 
+  
+Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) y los archivos .jar de nuestra aplicación, el despliegue de la aplicación se desarrola de la siguiente forma:
+    
+   1. Transferencia de archivos .jar a la VM:
         scp archivo_jar usuario@servidor:ruta_servidor_donde_colocar_archivo
-    2. Conexión SSH a la VM:
+   2. Conexión SSH a la VM:
         ssh usuario@ip
-    3. Instalación de mySQL en la VM.
-    4. Instalación de java8 en la VM.
-    5. Inicio del servicio mySQL :
+   3. Instalación de mySQL en la VM.
+   4. Instalación de java8 en la VM.
+   5. Inicio del servicio mySQL :
         service mysql start
-    6. Ejecución de los -jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
+   6. Ejecución de los jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
        java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
        java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
