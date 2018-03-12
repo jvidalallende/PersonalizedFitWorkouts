@@ -139,27 +139,27 @@ En primer lugar compilaremos la apliccacion, para ello es necesario maven y jdk8
   
 Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) y los archivos .jar de nuestra aplicación, el despliegue de la aplicación se desarrola de la siguiente forma:
     
-   1. Transferencia de archivos .jar a la VM:
-        ```
-         $ scp archivo_jar usuario@servidor:ruta_servidor_donde_colocar_archivo
-         ```
-   2. Conexión SSH a la VM:
-        ```
-        $ ssh usuario@ip
-        ```
-   3. Instalación de mySQL en la VM.
-   4. Instalación de java8 en la VM.
-   5. Inicio del servicio mySQL :
-        ```
-        $ service mysql start
-        ```
-    6. Crear un nuevo schema en la base de datos ("test").
-        6.1 - A través del workbench configuramos una nueva conexión, añadimos una nueva conexión y cambiamos el método de
+1. Transferencia de archivos .jar a la VM:
+    ```
+    $ scp archivo_jar usuario@servidor:ruta_servidor_donde_colocar_archivo
+    ```
+2. Conexión SSH a la VM:
+     ```
+     $ ssh usuario@ip
+    ```
+3. Instalación de mySQL en la VM.
+4. Instalación de java8 en la VM.
+5. Inicio del servicio mySQL :
+    ```
+    $ service mysql start
+    ```
+6. Crear un nuevo schema en la base de datos ("test").
+    1. A través del workbench configuramos una nueva conexión, añadimos una nueva conexión y cambiamos el método de
         TCP/IP a TCP/IP over ssh
-        6.2 - Validar la conexión y aceptar.
-        6.3 - Conexión a la base de datos  y creación de un nuevo schema (test).
-    7. Ejecución de los -jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
-           ```
-           $ java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
-           $ java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
-           ```
+    2. Validar la conexión y aceptar.
+    3. Conexión a la base de datos  y creación de un nuevo schema (test).
+7. Ejecución de los -jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
+    ```
+    $ java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
+    $ java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
+    ```
