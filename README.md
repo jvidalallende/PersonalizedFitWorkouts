@@ -107,7 +107,7 @@ Por otro lado hay restricción de acceso a diferentes páginas dependiendo de si
 el entrenador puedee añadir rutinas y un usuario no dispone de dicha opción siquiera, además la página de perfil de los usuarios y de los entrenadores
 son diferentes ya que un entrenador no dispone de biografía por lo que no puede acceder a ese campo.
 
-###Servicio interno
+### Servicio interno
 
 Como servicio interno, nuestra aplicación dispone de un conversor PDF, es capaz de convertir las rutinas en forma de tabla a formato PDF.
 
