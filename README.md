@@ -145,7 +145,7 @@ Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) 
          ```
    2. Conexión SSH a la VM:
         ```
-        ssh usuario@ip
+        $ ssh usuario@ip
         ```
    3. Instalación de mySQL en la VM.
    4. Instalación de java8 en la VM.
@@ -160,6 +160,6 @@ Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) 
         6.3 - Conexión a la base de datos  y creación de un nuevo schema (test).
     7. Ejecución de los -jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
            ```
-           java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
-           java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
+           $ java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
+           $ java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
            ```
