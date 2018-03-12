@@ -95,3 +95,41 @@ Perfil privado del entrenador al que puede acceder mediante el login.
 Perfil privado del usuario al que puede acceder mediante el login, a diferencia del entrenador solo contiene sus datos más relevantes..
 
 ![perfil_usuario](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/perfil_usuario.PNG?raw=true)
+
+## Fase 3
+
+En primer lugar hemos actualizado el diagrama de navegación:
+
+![diagrama_navegación2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20navegacion%202.jpg?raw=true)
+
+Hemos implementado seguridad de tal forma que el formulario de login es capaz de permitir el acceso solo a usuarios y entrenadore registrados.
+Por otro lado hay restricción de acceso a diferentes páginas dependiendo de si es un usuario o un entrenador quien accede; de esta forma
+el entrenador puedee añadir rutinas y un usuario no dispone de dicha opción siquiera, además la página de perfil de los usuarios y de los entrenadores
+son diferentes ya que un entrenador no dispone de biografía por lo que no puede acceder a ese campo.
+
+### Servicio interno
+
+Como servicio interno, nuestra aplicación dispone de un conversor PDF, es capaz de convertir las rutinas en forma de tabla a formato PDF.
+
+**Diagramas de Clases y Templates**:
+
+![diag_templ](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/diagrama%20Clases.jpg?raw=true)
+
+Dado que en el diagrama anterior no se mostraba la relación de repositorios y controladores hemos adjuntado otro diagrama:
+
+![diag_temp2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20Repository-Controller.jpg?raw=true)
+
+**Instrucciones para el despliegue de la aplicación**:
+
+Suponiendo que disponemos de una VM(Máquina Virtual ubuntu server) y los archivos .jar de nuestra aplicación, el despliegue de la aplicación se desarrola de la siguiente forma:
+    1. Transferencia de archivos .jar a la VM:
+        scp archivo_jar usuario@servidor:ruta_servidor_donde_colocar_archivo
+    2. Conexión SSH a la VM:
+        ssh usuario@ip
+    3. Instalación de mySQL en la VM.
+    4. Instalación de java8 en la VM.
+    5. Inicio del servicio mySQL :
+        service mysql start
+    6. Ejecución de los -jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
+       java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
+       java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
