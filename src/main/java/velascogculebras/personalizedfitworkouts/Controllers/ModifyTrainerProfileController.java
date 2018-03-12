@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
-import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -21,9 +20,6 @@ import java.io.IOException;
 public class ModifyTrainerProfileController {
     @Autowired
     public EntrenadorRepository entrenadorRepository;
-    @Autowired
-    public UsuarioReporsitory usuarioReporsitory;
-
     //Falta coger la imagen y cambiarla por la antigua
     @PostMapping("/modifyTrainerProfile")
     private String saveProfile(Model model, HttpSession session, @RequestParam String name,

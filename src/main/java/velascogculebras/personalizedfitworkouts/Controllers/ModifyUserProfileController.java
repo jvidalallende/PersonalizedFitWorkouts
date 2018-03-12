@@ -4,17 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
-import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
 import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class ModifyUserProfileController {
-    @Autowired
-    public EntrenadorRepository entrenadorRepository;
     @Autowired
     public UsuarioReporsitory usuarioReporsitory;
 
