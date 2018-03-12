@@ -147,6 +147,11 @@ Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) 
    4. Instalación de java8 en la VM.
    5. Inicio del servicio mySQL :
         service mysql start
-   6. Ejecución de los jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
+    6. Crear un nuevo schema en la base de datos ("test").
+        6.1 - A través del workbench configuramos una nueva conexión, añadimos una nueva conexión y cambiamos el método de
+        TCP/IP a TCP/IP over ssh
+        6.2 - Validar la conexión y aceptar.
+        6.3 - Conexión a la base de datos  y creación de un nuevo schema (test).
+    7. Ejecución de los -jar, primero PersonalizedFitWorkouts y después el servicio interno PDFcreator.
        java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
        java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
