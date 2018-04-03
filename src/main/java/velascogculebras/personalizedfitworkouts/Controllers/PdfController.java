@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Controller
 public class PdfController {
-    private static final String url = "http://localhost:8080/getPdf/";
+    private static final String url = "http://192.168.33.13:8080/getPdf/";
     @Autowired
     public RutinaRepository rutinaRepository;
 

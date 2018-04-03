@@ -31,7 +31,7 @@ public class PrincipalController {
     private UsuarioReporsitory usuarioReporsitory;
     @Autowired
     private ComentarioRepository comentarioRepository;
-
+/*
     @PostConstruct
     public void init() {
 
@@ -98,7 +98,7 @@ public class PrincipalController {
         comentario.setUser(usuario1);
         comentario.setRutina(rutina2);
         comentarioRepository.save(comentario);
-    }
+    } */
 
     @RequestMapping("/")
     private String getIndex(Model model, HttpSession session, HttpServletRequest request) {

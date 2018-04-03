@@ -111,13 +111,18 @@
                 </tr>
                 {{/ejercicios}}
             </table>
-            {{#user}}
-            <!-- Preguntar como hacer if -->
             <div align="right">
-                <a href="/addFav?userId={{id}}&rutinaId{{..id}}" class="btn btn-default"><span
-                        class="star glyphicon glyphicon-star"></span> Default text here</a>
+                <a href="/pdf?rutinaId={{rutinaId}}" target="_blank"> <span class="glyphicon glyphicon-file"
+                                                                            style="font-size: 25px;"></span></a>
+                {{#logged}}
+                {{#fav}}
+                <span rutinaId="{{rutinaId}}" class="star glyphicon glyphicon-star"></span>
+                {{/fav}}
+                {{^fav}}
+                <span rutinaId="{{rutinaId}}" class="star glyphicon glyphicon-star-empty"></span>
+                {{/fav}}
+                {{/logged}}
             </div>
-            {{/user}}
             <strong>Categorias:</strong>
             {{#categorias}}
             <a href="/secRutinas/filter?categoriaId={{id}}">{{nombre}}</a>
