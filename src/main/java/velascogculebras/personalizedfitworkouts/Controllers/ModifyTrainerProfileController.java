@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,8 @@ public class ModifyTrainerProfileController {
     public EntrenadorRepository entrenadorRepository;
     //Falta coger la imagen y cambiarla por la antigua
     @PostMapping("/modifyTrainerProfile")
-    private String saveProfile(Model model, HttpSession session, @RequestParam String name,
+    @CacheEvict("profile")
+    public String saveProfile(Model model, HttpSession session, @RequestParam String name,
                                @RequestParam String passwordHash, @RequestParam String email,
                                @RequestParam String bio, @RequestParam("fileImage") MultipartFile fileImage) throws IOException {
         Usuario usuario = (Usuario) session.getAttribute("user");

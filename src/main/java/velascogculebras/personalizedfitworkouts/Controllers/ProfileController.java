@@ -1,5 +1,6 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 public class ProfileController {
 
     @GetMapping("/miPerfil")
+    @Cacheable("profile")
 public String getPerfil(Model model, HttpServletRequest request, HttpSession session) {
 
     model.addAttribute("logged", session.getAttribute("user"));

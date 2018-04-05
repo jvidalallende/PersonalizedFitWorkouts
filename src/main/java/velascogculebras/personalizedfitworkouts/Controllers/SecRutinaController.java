@@ -1,6 +1,8 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +26,8 @@ public class SecRutinaController {
 
 
     @RequestMapping("/secRutina")
-    private String getComentarios(Model model, HttpSession session, @RequestParam long rutinaId) {
+    @Cacheable("rutina")
+    public String getComentarios(Model model, HttpSession session, @RequestParam long rutinaId) {
         Rutina rutina = rutinaRepository.findOne(rutinaId);
         List<Comentario> comentarios = comentarioRepository.findByRutinaOrderByDateAsc(rutina);
         Usuario usuario = (Usuario) session.getAttribute("user");
@@ -43,7 +46,8 @@ public class SecRutinaController {
     }
 
     @PostMapping("/comentar")
-    private String comentar(Model model, HttpSession session, @RequestParam long rutinaId, @RequestParam String comentario) {
+    @CacheEvict("rutina")
+    public String comentar(Model model, HttpSession session, @RequestParam long rutinaId, @RequestParam String comentario) {
         Comentario comentarioObj = new Comentario();
         Rutina rutina = rutinaRepository.findOne(rutinaId);
         comentarioObj.setRutina(rutina);

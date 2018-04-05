@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ public class SecRutinasController {
     private CategoriaRepository categoriaRepository;
 
     @RequestMapping("/secRutinas")
+    @Cacheable("rutinas")
     public String getRutines(Model model, HttpSession session) {
         Sort sort = new Sort(Sort.Direction.ASC, "date");
         List<Rutina> rutinas = rutinaRepository.findAll(sort);

@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,8 @@ public class SecEntrenadorController {
     private EntrenadorRepository entrenadorRepository;
 
     @RequestMapping("/secEntrenador")
-    private String getEntrenador(Model model, HttpSession session, long id) {
+    @Cacheable("trainer")
+    public String getEntrenador(Model model, HttpSession session, long id) {
         model.addAttribute("logged", session.getAttribute("user"));
         model.addAttribute("isTrainer", session.getAttribute("user") instanceof Entrenador);
 

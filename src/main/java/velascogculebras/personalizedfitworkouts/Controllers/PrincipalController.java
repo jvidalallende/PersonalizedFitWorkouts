@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -31,7 +32,7 @@ public class PrincipalController {
     private UsuarioReporsitory usuarioReporsitory;
     @Autowired
     private ComentarioRepository comentarioRepository;
-/*
+
     @PostConstruct
     public void init() {
 
@@ -98,10 +99,11 @@ public class PrincipalController {
         comentario.setUser(usuario1);
         comentario.setRutina(rutina2);
         comentarioRepository.save(comentario);
-    } */
+    }
 
     @RequestMapping("/")
-    private String getIndex(Model model, HttpSession session, HttpServletRequest request) {
+    @Cacheable("index")
+    public String getIndex(Model model, HttpSession session, HttpServletRequest request) {
         model.addAttribute("logged", session.getAttribute("user"));
         model.addAttribute("isTrainer", session.getAttribute("user") instanceof Entrenador);
         model.addAttribute("entrenador", entrenadorRepository.findAll());

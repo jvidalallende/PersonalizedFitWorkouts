@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,8 @@ public class ModifyUserProfileController {
 
     //Falta coger la imagen y cambiarla por la antigua
     @PostMapping("/modifyUserProfile")
-    private String saveProfile(HttpSession session,@RequestParam String name,
+    @CacheEvict("profile")
+    public String saveProfile(HttpSession session, @RequestParam String name,
                                @RequestParam String passwordHash,@RequestParam String email){
         Usuario usuario = (Usuario) session.getAttribute("user");
         if(usuario.getRoles().contains("ROLE_USER")){

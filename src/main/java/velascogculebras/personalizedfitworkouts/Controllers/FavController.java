@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class FavController {
     RutinaRepository rutinaRepository;
 
     @GetMapping("/favoritos")
+    @Cacheable("favorites")
     public String showFav(Model model, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("user");
         model.addAttribute("logged", usuario);

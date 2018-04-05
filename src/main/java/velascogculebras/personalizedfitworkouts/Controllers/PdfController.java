@@ -2,6 +2,7 @@ package velascogculebras.personalizedfitworkouts.Controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class PdfController {
     public RutinaRepository rutinaRepository;
 
     @GetMapping("pdf")
+    @Cacheable("pdf")
     public void getPdf(@RequestParam long rutinaId, HttpServletResponse response) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
         try {
