@@ -4,12 +4,13 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Rutina {
+public class Rutina implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long rutinaId;

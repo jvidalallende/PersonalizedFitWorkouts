@@ -33,7 +33,7 @@ public class PrincipalController {
     @Autowired
     private ComentarioRepository comentarioRepository;
 
-    @PostConstruct
+  /*  @PostConstruct
     public void init() {
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -99,7 +99,7 @@ public class PrincipalController {
         comentario.setUser(usuario1);
         comentario.setRutina(rutina2);
         comentarioRepository.save(comentario);
-    }
+    }*/
 
     @RequestMapping("/")
     @Cacheable("index")
