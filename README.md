@@ -166,6 +166,9 @@ Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) 
    
 ## Fase 4
 
+La comunicación con el servicio interno se realiza a través de la API Rest. Únicamente tenemos un endpoint al que le pasamos el id de
+la rutina y crea un pdf cuyo nombre es dicho id.
+
 En este nuevo diagrama hemos añadido las clases de configuración.
 
 ![diag_clas2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/diagrama%20Clases2.jpg?raw=true)
