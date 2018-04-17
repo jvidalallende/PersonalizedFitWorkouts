@@ -163,3 +163,17 @@ Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) 
     $ java -jar personalizedfitworkouts-0.0.1-SNAPSHOT.jar
     $ java -jar pdfcreatormodule-0.0.1-SNAPSHOT.jar
     ```
+   
+## Fase 4
+
+En este nuevo diagrama hemos añadido las clases de configuración.
+
+![diag_clas2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/diagrama%20Clases2.jpg?raw=true)
+
+Teniendo en cuenta que aunque en el diagrama podemos observar los servidores conmo instancias diferentes, ambos acceden a las instancias 
+consecuentes por igual.
+
+![diag_arqu](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Arquitectura.jpg?raw=true)
+
+
+**Despliegue:**
