@@ -180,3 +180,235 @@ consecuentes por igual.
 
 
 **Despliegue:**
+
+Para el despliegue es necesario contar en el equipo con Vagrant, una vez instalado:
+
+ Lo primero que debemos hacer es crear un directorio contenedor de las carpetas en las 
+ cuales van a estar cada MV.
+  
+ Las carpetas que debemos crear son las siguientes: **Proxy1**, **Proxy2**, **InternalService1**, **InternalService2**,
+ **Web1**, **Web2**, **DataBaseMaster**, **DataBaseSlave**.
+ 
+ Divididas en los siguientes roles:
+ 
+  - **Proxy**: Proxy1, Proxy2.
+  - **Servicio Interno**: InternalService1, InternalService2.
+  - **Servidores**: Web1, Web2, InternalService1, InternalService2.
+  - **Bases de Datos**: DataBaseMaster, DataBaseSlave.
+ 
+ Una vez hemos creado este directorio, creamos las carpetas (una por MV), y en cada una de ellas ejecutamos 
+ el siguiente comnado para la creación de dichas MV:
+ 
+    $ vagrant init [name [url]]
+ 
+ En nuestro caso:
+ 
+    $ vagrant init ubuntu/xenial64
+ 
+ Ahora debemos configurar cada MV:
+ 
+ **Proxys**:
+ 
+ Empecemos por el Proxy1; el cual va ser el que va a balancear el trabajo entre los dos servidores 
+ web1 y web2 a la vez que la "puerta de entrada".
+ 
+ Primero debemos arrancar la MV con el comando :
+ 
+ *(situados en su carpeta)*
+ 
+    $ vagrant up
+    
+ Y conectarnos a ella:
+    
+    $ vagrant ssh
+ 
+ **(Estos dos pasos son iguales en el resto MV)**
+ 
+ Una vez estamos conectados a la MV, instalamos haproxy:
+ 
+    $ sudo apt install haproxy 
+    
+ A continuación editamos el archivo de configuración (*.cfg) añadiendo el siguiente código al final:
+ 
+    frontend localhost
+            bind *:80
+            bind *:443 ssl crt /etc/ssl/xip.io/xip.io.pem
+            redirect scheme https if !{ ssl_fc }
+            mode http
+            default_backend nodes
+    
+    
+    backend nodes
+            mode http
+            balance roundrobin
+            option forwardfor
+            cookie SRV_ID insert
+            server web1 192.168.33.11:8080 check cookie 1
+            server web2 192.168.33.12:8080 check cookie 2
+    
+ Despues de reiniciar el servicio, haproxy estaría en funcionamiento:
+ 
+    $ sudo service haproxy restart
+    
+ Para el segundo proxy procederíamos de la misma forma; conectándonos e instalando haproxy y editando 
+ su archivo de configuración de la siguiente manera, añadiendo el siguiente código al final:
+ 
+    frontend localnodes
+        bind *:8080
+        mode http
+        default_backend nodes
+    
+    
+    backend nodes
+        mode http
+        balance roundrobin
+        option forwardfor
+        server pdf1 192.168.33.14:8080 check
+        server pdf2 192.168.33.15:8080 check
+    
+ **Servicio Interno**:
+ 
+  En el servicio interno vamos a configurar los servidores encargados de nuestro servicio de creador de 
+  PDFs (InternalService1 y 2), en ambos se actúa de la misma manera:
+ 
+  *Habiendo arrancado y estando conectados a la MV:*
+ 
+ Tanto en estos servidores como en los encargados de la aplicacición (Web1 y Web2) tendremos que instalar la última
+ versión de java.
+ 
+    $ sudo apt install java-jre-default
+ 
+ Por último añadimos a las carpetas contenedoras de las MV el .jar correspondiente al servicio interno,
+ de esta manera ya tendríamos preparado el servidor para lanzar el servicio interno mas adelante.
+ 
+ **Servidores**:
+ 
+ Los servidores serán los encargados de ejecutar nuestra aplicación y contaremos con dos : Web1 y Web2.
+ 
+  *Habiendo arrancado y estando conectados a la MV:*
+  
+ Al igual que en el servicio interno instalamos la última versión de java  en ambos servidores (web1 y web2) y 
+ situamos los archivos .jar correspondientes a la aplicación en las carpetas de dichos servidores, dejando
+ de esta manera ambos servidores preparados para el posterior lanzamiento de la aplicación. 
+ 
+ **Bases de Datos**:
+ 
+ Los servidores de BBDD serán los encargados de almacenar los datos que nuestra aplicación desee guardar y recuperar y 
+ siguen una jerarquía de maestro - esclavo.
+ 
+  *Habiendo arrancado y estando conectados a la MV:*
+ 
+ Empecemos con el maestro (DataBaseMaster):
+ En primer llugar debemos instalar MySql en la MV:
+ 
+    sudo apt install mysql-server
+    
+ Una vez instalado editamos el archivo de configuración.
+ 
+    $ sudo nano /etc/mysql/my.cnf
+  
+  Cambiando el campo bind_address por la ip de la MV.
+  
+    [mysqld]
+    bind-address            = 192.168.33.16
+    server-id               = 1
+    log_bin                 = /var/log/mysql/mysql-bin.log
+    binlog_do_db            = test
+    
+ Reiniciamos el servicio
+ 
+    $ sudo service mysql restart
+   
+ Abrimos MySql Shell:
+ 
+    $mysql -u root -p
+    
+ Creamos la base de datos:
+ 
+    CREATE DATABASE test;
+    EXIT;
+    
+ Damos privilegios al esclavo
+ 
+    mysql> GRANT REPLICATION SLAVE ON *.* TO 'slave_user'@'%' IDENTIFIED BY 'password';
+    
+    mysql> FLUSH PRIVILEGES;
+    
+    mysql> USE test;
+    
+    mysql> FLUSH TABLES WITH READ LOCK;
+    
+    mysql> SHOW MASTER STATUS;
+    
+ Cuando recibamos la salida del siguiente comando que será una tabla, deberemos apuntar
+ la columna 'File' y la columna 'Position'
+ 
+    mysql> SHOW MASTER STATUS;
+    
+ En el bash normal realizamos la exportación de la BBDD.
+ 
+    $ mysqldump -u root -p --opt test > test.sql
+    
+ Volviendo a MySQL shell:
+       
+    mysql> UNLOCK TABLES;
+    mysql> QUIT;
+    
+ Configuramos ahora el esclavo (DataBaseSlave):
+ 
+ *Habiendo arrancado y estando conectados a la MV:*
+ 
+
+  Creamos la base de datos:
+  
+    mysql> CREATE DATABASE test;
+    mysql> EXIT;
+    
+ Movemos la archivo .sql creado anteriormente del master al slave (A traves de las carpetas compartitdas 
+ de vagrant /vagrant) y una vez movido lo importamos a la BBDD:
+ 
+    mysql -u root -p test < /vagrant/test.sql
+    
+ Editamos la configuración al igual que hicimos con el master:
+ 
+    $ sudo nano /etc/mysql/my.cnf
+    
+ Y añadimos:
+ 
+    [mysqld] 
+    bind-address            = 192.168.33.17
+    server-id               = 2
+    relay-log               = /var/log/mysql/mysql-relay-bin.log
+    log_bin                 = /var/log/mysql/mysql-bin.log
+    binlog_do_db            = test
+    
+ Reiniciamos el servicio 
+  
+    $ sudo service mysql restart
+    
+ Dentro de MySQL Shell activamos la replicación
+  
+    mysql> CHANGE MASTER TO MASTER_HOST='12.34.56.789',MASTER_USER='slave_user', MASTER_PASSWORD='password', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=  107;
+    
+ Siendo MASTER_LOG_FILE Y MASTER_LOG_POS las dos columnas apuntadas anteriormente.
+ Activamos el esclavo
+ 
+    mysql> START SLAVE;
+    
+  De esta manera tendríamos configurada la replicación maestro-esclavo.
+  
+ Por último añadimos los usuarios a la BBDD para permitir las conexiones de los servidores a estas par 
+ ello ejecutamos las siguientes instrucciones para cada ip de servidor en cada una de las bases de datos.
+  
+    mysql> create user 'server'@'<ip VM>' identified by 'password';
+    mysql> grant all privileges on  test.* on 'server'@'<ip VM>';
+    
+ Una ejecutadas hacemos un flush de los privilegios.
+    
+    mysql> flush privileges;
+    
+ De esta manera tendríamos configurada la BBDD.
+ 
+ 
+    
+  
