@@ -84,7 +84,13 @@
         <div class="autorHeader">
             {{#entrenador}}
             <a href="secEntrenador?id={{id}}">
+                {{#profileIcon}}
                 <img src="{{profileIcon}}" height="60px" width="60px" alt="320px" class="img-circle profile-icon">
+                {{/profileIcon}}
+                {{^profileIcon}}
+                <img src="images/default-avatar.png" height="60px" width="60px" alt="320px"
+                     class="img-circle profile-icon">
+                {{/profileIcon}}
             </a>
             <span class="autorName"> {{nombre}}</span>
             {{/entrenador}}
@@ -144,9 +150,9 @@
             <label>
                 <textarea name="comentario" class="form-control" rows="5" cols="156"></textarea>
             </label>
-            {{#Rutina}}
-            <input type="hidden" name="rutinaId" value="{{id}}">
-            {{/Rutina}}
+            {{#rutina}}
+            <input type="hidden" name="rutinaId" value="{{rutinaId}}">
+            {{/rutina}}
             <input type="hidden" name="_csrf" value="{{token}}">
             <button type="submit" class="btn btn-default ">Enviar</button>
         </form>
