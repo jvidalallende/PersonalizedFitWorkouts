@@ -166,8 +166,8 @@ Seguidamente procedemos al despliegue en una VM(Máquina Virtual ubuntu server) 
    
 ## Fase 4
 
-La comunicación con el servicio interno se realiza a través de la API Rest. Únicamente tenemos un endpoint al que le pasamos el id de
-la rutina y crea un pdf cuyo nombre es dicho id.
+La comunicación con el servicio interno se realiza a través de API Rest. Únicamente tenemos un endpoint ubicado en la URL "/getPdf" que atiende peticiones de tipo GET.
+Ademas recibe un parametro "rutinaId" el cual indica el id de la rutina que queremos transformar a formato PDF.
 
 En este nuevo diagrama hemos añadido las clases de configuración.
 
