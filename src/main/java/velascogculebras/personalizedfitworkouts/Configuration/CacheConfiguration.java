@@ -16,7 +16,7 @@ import java.util.Arrays;
 @EnableCaching
 public class CacheConfiguration extends CachingConfigurerSupport {
 
-    private String[] cacheNames = {"profile", "rutina", "index", "pdf", "rutinas", "trainers"};
+    private String[] cacheNames = {"profile", "rutina", "index", "pdf", "rutinas", "trainers", "trainer"};
 
     @Bean
     public CacheManager cacheManager() {

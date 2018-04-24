@@ -23,7 +23,7 @@ public class ModifyTrainerProfileController {
     public EntrenadorRepository entrenadorRepository;
     //Falta coger la imagen y cambiarla por la antigua
     @PostMapping("/modifyTrainerProfile")
-    @CacheEvict("profile")
+    @CacheEvict(value = {"profile", "trainer"})
     public String saveProfile(Model model, HttpSession session, @RequestParam String name,
                                @RequestParam String passwordHash, @RequestParam String email,
                                @RequestParam String bio, @RequestParam("fileImage") MultipartFile fileImage) throws IOException {
