@@ -1,4 +1,8 @@
 # Personalized Fit Workouts
+
+[Video]: http:www.youtube.com
+
+
 ## Descripción de la web
 La web a implementar trata de acercar al usuario a planes de entrenamiento a través de rutinas accesibles por los usuarios, categorizando estas rutinas en dos tipos públicas y personalizadas para cada usuario:
 
