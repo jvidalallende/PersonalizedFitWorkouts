@@ -409,6 +409,22 @@ Para el despliegue es necesario contar en el equipo con Vagrant, una vez instala
     
  De esta manera tendríamos configurada la BBDD.
  
- 
+**Funcionamiento Final**
     
+  Contando con el proxy y la bases de datos en funcionamiento, lo único que restaría es ejecutar la aplicación en 
+  los servidores y el servicio interno:
+  
+  (Estando conectados a los servidores)
+  
+  Primero ejecutamos la aplicación en el servidor web1 y web2:
+  
+    $java -jar [NombreDeFichero].jar
+    
+  A continuación ejecutamos el servicio interno en sus correspondientes servers:
+  
+    $java -jar [NombreFicheroServicioInterno].jar
+    
+  De esta manera terndrríamos nuestra aplicación en funcionamiento.
+    
+  
   
