@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import velascogculebras.personalizedfitworkouts.Entities.Rutina;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.RutinaRepository;
+import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpSession;
 public class FavRestController {
     @Autowired
     public RutinaRepository rutinaRepository;
+    @Autowired
+    public UsuarioReporsitory usuarioReporsitory;
 
     @GetMapping("/addFav2")
     @CacheEvict("favorites")
@@ -27,6 +30,8 @@ public class FavRestController {
         } else {
             usuario.getRutinasFav().add(rutina);
         }
+        usuarioReporsitory.save(usuario);
+        session.setAttribute("user", usuario);
 
         return true;
 
