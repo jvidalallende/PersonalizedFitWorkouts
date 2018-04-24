@@ -22,10 +22,17 @@ public class ModifyUserProfileController {
                                @RequestParam String passwordHash,@RequestParam String email){
         Usuario usuario = (Usuario) session.getAttribute("user");
         if(usuario.getRoles().contains("ROLE_USER")){
-            usuario.setName(name);
-            usuario.setPasswordHash(passwordHash);
-            usuario.setMail(email);
+            if (!name.isEmpty()) {
+                usuario.setName(name);
+            }
+            if (!passwordHash.isEmpty()) {
+                usuario.setPasswordHash(passwordHash);
+            }
+            if (!email.isEmpty()) {
+                usuario.setMail(email);
+            }
             usuarioReporsitory.save(usuario);
+            session.setAttribute("user", usuario);
         }
         return "redirect:/";
     }

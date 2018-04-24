@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import velascogculebras.personalizedfitworkouts.Entities.Entrenador;
 import velascogculebras.personalizedfitworkouts.Entities.Usuario;
 import velascogculebras.personalizedfitworkouts.Repositories.EntrenadorRepository;
+import velascogculebras.personalizedfitworkouts.Repositories.UsuarioReporsitory;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -29,12 +30,21 @@ public class ModifyTrainerProfileController {
                                @RequestParam String bio, @RequestParam("fileImage") MultipartFile fileImage) throws IOException {
         Usuario usuario = (Usuario) session.getAttribute("user");
         if(usuario.getRoles().contains("ROLE_TRAINER")){
-            Entrenador trainer = (Entrenador) usuario;
-            trainer.setName(name);
-            trainer.setPasswordHash(passwordHash);
-            trainer.setMail(email);
-            trainer.setBiografia(bio);
+            Entrenador trainer = (Entrenador) session.getAttribute("user");
+            if (!name.isEmpty()) {
+                trainer.setName(name);
+            }
+            if (!passwordHash.isEmpty()) {
+                trainer.setPasswordHash(passwordHash);
+            }
+            if (!email.isEmpty()) {
+                trainer.setMail(email);
+            }
+            if (!bio.isEmpty()) {
+                trainer.setBiografia(bio);
+            }
             entrenadorRepository.save(trainer);
+            session.setAttribute("user", trainer);
 
             if (!fileImage.getOriginalFilename().equals("")) {
 
