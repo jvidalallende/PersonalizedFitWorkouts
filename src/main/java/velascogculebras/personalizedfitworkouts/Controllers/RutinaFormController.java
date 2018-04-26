@@ -1,6 +1,7 @@
 package velascogculebras.personalizedfitworkouts.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ public class RutinaFormController {
     private CategoriaRepository categoriaRepository;
 
     @PostMapping("/rutinaForm")
+    @CacheEvict(value = {"index", "rutinas"}, allEntries = true)
     public String getForm(Model model, @RequestParam String name, @RequestParam String e1, @RequestParam Integer s1, @RequestParam String r1,
                           @RequestParam String e2, @RequestParam Integer s2, @RequestParam String r2,
                           @RequestParam String e3, @RequestParam Integer s3, @RequestParam String r3,
