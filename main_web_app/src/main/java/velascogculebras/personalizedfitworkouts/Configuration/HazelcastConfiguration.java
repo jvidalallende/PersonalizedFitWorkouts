@@ -27,10 +27,10 @@ public class HazelcastConfiguration {
                 .setExtractor(PrincipalNameExtractor.class.getName());
 
         Config config = new Config();
-        JoinConfig joinConfig = config.getNetworkConfig().getJoin();
+        //JoinConfig joinConfig = config.getNetworkConfig().getJoin();
 
-        joinConfig.getMulticastConfig().setEnabled(false);
-        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Arrays.asList("192.168.33.11"));
+        //joinConfig.getMulticastConfig().setEnabled(false);
+        //joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Arrays.asList("192.168.33.11"));
 
         config.getMapConfig(HazelcastSessionRepository.DEFAULT_SESSION_MAP_NAME)
                 .addMapAttributeConfig(attributeConfig)
