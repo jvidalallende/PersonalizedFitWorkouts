@@ -34,15 +34,15 @@ El servicio interno realizará dos funciones, en primer lugar será el encargado
 ## Fase 2
 En esta fase explicamos cómo va a funcionar nuestra aplicación. En el diagrama de navegación podemos observar cómo movernos en las diferentes pantallas de la aplicacaión.
 
-![d_navegación](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20navegacion.jpg?raw=true)
+![d_navegación](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/Diagrama%20navegacion.jpg?raw=true)
 
 El diagrama E/R muestra las relaciones entre las distintas entidades.
 
-![E/R](https://raw.githubusercontent.com/sculebras1/PersonalizedFitWorkouts/master/screenshot/images/ERd.PNG)
+![E/R](https://raw.githubusercontent.com/sculebras1/PersonalizedFitWorkouts/master/old_doc/screenshot/images/ERd.PNG)
 
 A continuación en el diagrama UML podemos ver las diferentes entidades con sus atributos y las relaciones entre ellas.
 
-![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Modelo%20UML.PNG?raw=true)
+![UML](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/Modelo%20UML.PNG?raw=true)
 
 # Páginas principales
 
@@ -50,61 +50,61 @@ A continuación en el diagrama UML podemos ver las diferentes entidades con sus 
 
 Página principal o índice desde el cual se accede a los diferentes servicios de entrenedors y rutinas así como al login.
 
-![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/index.PNG?raw=true)
+![índice](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/index.PNG?raw=true)
 
 ## Entrenadores
 
 Visualización de todos los entrenadores que están registrados.
 
-![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/entrenadores.PNG?raw=true)
+![entrenadores](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/entrenadores.PNG?raw=true)
 
 ## Rutinas
 
 Visualización de todas las rutinas disponibles y subidas por los diferentes entrenadores con sus respectivas categorías.
 
-![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/rutinas.PNG?raw=true)
+![rutinas](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/rutinas.PNG?raw=true)
 
 ## Ver entrenador
 
 Posibilita acceder al perfil público del entrenador deseado.
 
-![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/entrenador_ver.PNG?raw=true)
+![entrenador_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/entrenador_ver.PNG?raw=true)
 
 ## Ver rutina
 
 Permite acceder a una rutina en concreto.
 
-![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/rutina_ver.PNG?raw=true)
+![rutina_ver](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/rutina_ver.PNG?raw=true)
 
 ## Login
 
 Patalla de inicio de sesión tanto para usuarios como para entrenadores.
 
-![login](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/login.PNG?raw=true)
+![login](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/login.PNG?raw=true)
 
 ## Registro
 
 Registro con diferenciación de rol dentro de la aplicación según seamos un usuario o entrenador.
 
-![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/registro.PNG?raw=true)
+![registro](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/registro.PNG?raw=true)
 
 ## Perfil del entrenador
 
 Perfil privado del entrenador al que puede acceder mediante el login.
 
-![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/perfil_entrenador.PNG?raw=true)
+![perfil_entrenador](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/perfil_entrenador.PNG?raw=true)
 
 ## Perfil del usuario
 
 Perfil privado del usuario al que puede acceder mediante el login, a diferencia del entrenador solo contiene sus datos más relevantes..
 
-![perfil_usuario](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/perfil_usuario.PNG?raw=true)
+![perfil_usuario](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/perfil_usuario.PNG?raw=true)
 
 ## Fase 3
 
 En primer lugar hemos actualizado el diagrama de navegación:
 
-![diagrama_navegación2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20navegacion%202.jpg?raw=true)
+![diagrama_navegación2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/Diagrama%20navegacion%202.jpg?raw=true)
 
 Hemos implementado seguridad de tal forma que el formulario de login es capaz de permitir el acceso solo a usuarios y entrenadore registrados.
 Por otro lado hay restricción de acceso a diferentes páginas dependiendo de si es un usuario o un entrenador quien accede; de esta forma
@@ -117,11 +117,11 @@ Como servicio interno, nuestra aplicación dispone de un conversor PDF, es capaz
 
 **Diagramas de Clases y Templates**:
 
-![diag_templ](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/diagrama%20Clases.jpg?raw=true)
+![diag_templ](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/diagrama%20Clases.jpg?raw=true)
 
 Dado que en el diagrama anterior no se mostraba la relación de repositorios y controladores hemos adjuntado otro diagrama:
 
-![diag_temp2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Diagrama%20Repository-Controller.jpg?raw=true)
+![diag_temp2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/Diagrama%20Repository-Controller.jpg?raw=true)
 
 **Instrucciones para el despliegue de la aplicación**:
 
@@ -175,12 +175,12 @@ Ademas recibe un parametro "rutinaId" el cual indica el id de la rutina que quer
 
 En este nuevo diagrama hemos añadido las clases de configuración.
 
-![diag_clas2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/diagrama%20Clases2.jpg?raw=true)
+![diag_clas2](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/diagrama%20Clases2.jpg?raw=true)
 
 Teniendo en cuenta que aunque en el diagrama podemos observar los servidores conmo instancias diferentes, ambos acceden a las instancias 
 consecuentes por igual.
 
-![diag_arqu](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/screenshot/images/Arquitectura.jpg?raw=true)
+![diag_arqu](https://github.com/sculebras1/PersonalizedFitWorkouts/blob/master/old_doc/screenshot/images/Arquitectura.jpg?raw=true)
 
 
 **Despliegue:**
