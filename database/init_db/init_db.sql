@@ -1,0 +1,3 @@
+CREATE DATABASE test;
+CREATE USER 'server' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON test.* TO 'server';
