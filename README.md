@@ -1,4 +1,4 @@
-# ESSD-WebChat
+# PersonalizedFitWorkouts en Kubernetes
 
 Esta práctica forma parte de la asignatura _Computación en la Nube_
 del curso _Experto en Sistemas Software Distribuidos_, en el curso 2018-2019.
