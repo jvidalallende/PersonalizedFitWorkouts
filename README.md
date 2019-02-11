@@ -35,7 +35,7 @@ En la base de datos es necesario crear una base de datos y un usuario (con su
 respectiva contraseña) que después serán inyectados a la aplicación principal
 como propiedades. Para hacer esto, al lanzar el contenedor de la base de datos
 basta con montar un volumen con los scripts SQL de inicialización en la ruta
-`/docker-entrypoint-initdb`, y estos se ejecutarán al arrancar el contenedor.
+`/docker-entrypoint-initdb.d`, y estos se ejecutarán al arrancar el contenedor.
 
 # Referencias
 
