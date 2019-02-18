@@ -4,6 +4,7 @@ WORKDIR /usr/src/mymaven
 ADD . /usr/src/mymaven/
 RUN mvn clean package -DskipTests
 
+
 # Run on alpine using the package created previously
 FROM openjdk:8-jre-alpine
 
