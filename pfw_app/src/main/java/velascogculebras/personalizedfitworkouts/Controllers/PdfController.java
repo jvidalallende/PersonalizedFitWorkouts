@@ -15,7 +15,10 @@ import java.io.IOException;
 
 @Controller
 public class PdfController {
-    private static final String url = "http://172.17.0.1:8090/getPdf/";
+    private static final String HOST = System.getenv().get("PDF_CREATOR_HOST");
+    private static final String PORT = System.getenv().get("PDF_CREATOR_PORT");
+    private static final String PDF_SERVICE_URL = "http://" + HOST + ":" + PORT + "getPdf/";
+
     @Autowired
     public RutinaRepository rutinaRepository;
 
@@ -25,7 +28,7 @@ public class PdfController {
         RestTemplate restTemplate = new RestTemplate();
         try {
 
-            ObjectNode data = restTemplate.getForObject(url + rutinaId, ObjectNode.class);
+            ObjectNode data = restTemplate.getForObject(PDF_SERVICE_URL + rutinaId, ObjectNode.class);
 
             byte[] bytes = data.get("file").binaryValue();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
