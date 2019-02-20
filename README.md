@@ -37,6 +37,22 @@ como propiedades. Para hacer esto, al lanzar el contenedor de la base de datos
 basta con montar un volumen con los scripts SQL de inicialización en la ruta
 `/docker-entrypoint-initdb.d`, y estos se ejecutarán al arrancar el contenedor.
 
+#### Kubernetización
+
+La base de datos se arranca en su propio POD, con un contenedor en el que se montan
+dos volúmenes: uno para el PV, y otro para el INITDB. Puesto que el volumen de INITDB
+utiliza un fichero que está en el repositorio (y tiene que hacerse accesible desde
+minikube), lo más sencillo es clonar el repositorio en el directorio HOME de minikube
+(`/home/docker`). El spec está preparado para usar esa ruta como base.
+
+Para exponer la BBDD al resto del cluster se utiliza un servicio que expone el puerto
+3306, el que usa MariaDB por defecto.
+
+Para verificar la conexión, puede utilizarse un contenedor de mariaDB, usando los comandos:
+
+  $ kubectl run -it --rm --restart=Never mariadb-exec --image=mariadb:10.0 bash
+  # mysql --host=db --port=3306 --user=root --password=banana --database=test
+
 # Referencias
 
 * [Installing and using MariaDB via Docker](https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/)
