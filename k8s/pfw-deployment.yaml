@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pfw-front
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: pfw-front
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pfw-front
+spec:
+  selector:
+    matchLabels:
+      app: pfw-front
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pfw-front
+    spec:
+      containers:
+      - image: juanvidal-pfw-app
+        name: pfw-front
+        env:
+        - name: DB_USERNAME
+          value: server
+        - name: DB_PASSWORD
+          value: password
+        - name: DB_HOST
+          value: db
+        - name: PDF_CREATOR_HOST
+          value: pdf_service
+        - name: PDF_CREATOR_PORT
+          value: "8090"
+        ports:
+        - containerPort: 8080
+          name: pfw-front
