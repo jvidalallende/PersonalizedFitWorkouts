@@ -1,49 +1,45 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pfw-front
+  name: pdf-service
 spec:
   ports:
-  - port: 8080
+  - port: 8090
   type: NodePort
   selector:
-    app: pfw-front
+    app: pdfcreator
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pfw-front
+  name: pdfcreator
 spec:
   selector:
     matchLabels:
-      app: pfw-front
+      app: pdfcreator
   replicas: 1
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: pfw-front
+        app: pdfcreator
     spec:
       containers:
-      - image: juanvidal-pfw-app
+      - image: juanvidal-pdfcreator
         imagePullPolicy: IfNotPresent
-        name: pfw-front
+        name: pdfcreator
         env:
         - name: DB_USERNAME
-          value: server
+          value: pdfcreator
         - name: DB_PASSWORD
-          value: password
+          value: pdfcreator-password
         - name: DB_HOST
           value: db
         - name: DB_NAME
           value: test
         - name: DB_PORT
           value: "3306"
-        - name: PDF_CREATOR_HOST
-          value: pdf-service
-        - name: PDF_CREATOR_PORT
-          value: "8090"
         ports:
-        - containerPort: 8080
-          name: pfw-front
+        - containerPort: 8090
+          name: pdfcreator
