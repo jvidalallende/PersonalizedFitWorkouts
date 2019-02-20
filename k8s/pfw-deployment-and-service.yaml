@@ -5,6 +5,7 @@ metadata:
 spec:
   ports:
   - port: 8080
+  type: NodePort
   selector:
     app: pfw-front
 ---
@@ -16,6 +17,7 @@ spec:
   selector:
     matchLabels:
       app: pfw-front
+  replicas: 1
   strategy:
     type: Recreate
   template:
@@ -25,6 +27,7 @@ spec:
     spec:
       containers:
       - image: juanvidal-pfw-app
+        imagePullPolicy: IfNotPresent
         name: pfw-front
         env:
         - name: DB_USERNAME
@@ -33,6 +36,10 @@ spec:
           value: password
         - name: DB_HOST
           value: db
+        - name: DB_NAME
+          value: test
+        - name: DB_PORT
+          value: "3306"
         - name: PDF_CREATOR_HOST
           value: pdf_service
         - name: PDF_CREATOR_PORT

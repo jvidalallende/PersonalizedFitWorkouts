@@ -51,7 +51,17 @@ Para exponer la BBDD al resto del cluster se utiliza un servicio que expone el p
 Para verificar la conexión, puede utilizarse un contenedor de mariaDB, usando los comandos:
 
   $ kubectl run -it --rm --restart=Never mariadb-exec --image=mariadb:10.0 bash
-  # mysql --host=db --port=3306 --user=root --password=banana --database=test
+
+### PDF app
+
+### PFW app
+
+#### Kubernetización
+
+Es necesario pasar todas las variables de entorno, o la app no funciona correctamente.
+Las variables de entorno de construcción no sirven para nada... ¿habría que eliminarlas?
+
+De momento probado con una única réplica. ¿cómo gestionar Hazelcast? ¿Un nuevo servicio?
 
 # Referencias
 
