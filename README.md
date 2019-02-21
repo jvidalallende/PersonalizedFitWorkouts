@@ -63,6 +63,22 @@ Las variables de entorno de construcción no sirven para nada... ¿habría que e
 
 De momento probado con una única réplica. ¿cómo gestionar Hazelcast? ¿Un nuevo servicio?
 
+#### Hazelcast
+
+La implementación existente de la aplicación hace uso de *Hazelcast* para tener una
+caché distribuida de sesiones. Sin embargo, tiene escrita la IP exacta del nodo
+maestro, lo cual no es válido en un despliegue en Kubernetes.
+
+Para utilizar Hazelcast en Kubernetes, se ha desplegado un nuevo servicio que permite
+comunicarse a las réplicas a través del puerto 5701, y se ha actualizado el pom.xml
+para utilizar *hazelcast-kubernetes* junto con una versión reciente de Hazelcast.
+
+Haciendo uso de la API de Kubernetes (para lo cual hay que dar permisos mediante
+el fichero de autorización `rbac.yaml`), es posible hacer que las instancias de
+la aplicación se autodescubran. Para mejorar además la configuración, se ha especificado
+que únicamente las instancias pertenecientes al servicio `hazelcast` sean las que
+se interroguen para unirse al cluster de replicación de sesiones.
+
 # Referencias
 
 * [Installing and using MariaDB via Docker](https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/)

@@ -9,6 +9,18 @@ spec:
   selector:
     app: pfw-front
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hazelcast
+spec:
+  type: LoadBalancer
+  selector:
+    app: pfw-front
+  ports:
+  - name: hazelcast
+    port: 5701
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -44,6 +56,8 @@ spec:
           value: pdf-service
         - name: PDF_CREATOR_PORT
           value: "8090"
+        - name: HAZELCAST_SERVICE_NAME
+          value: hazelcast
         ports:
         - containerPort: 8080
           name: pfw-front
