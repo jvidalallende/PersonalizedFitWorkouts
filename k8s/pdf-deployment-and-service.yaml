@@ -5,7 +5,6 @@ metadata:
 spec:
   ports:
   - port: 8090
-  type: NodePort
   selector:
     app: pdfcreator
 ---
@@ -17,7 +16,7 @@ spec:
   selector:
     matchLabels:
       app: pdfcreator
-  replicas: 1
+  replicas: 2
   strategy:
     type: Recreate
   template:
