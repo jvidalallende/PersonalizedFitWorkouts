@@ -84,6 +84,24 @@ la aplicación se autodescubran. Para mejorar además la configuración, se ha e
 que únicamente las instancias pertenecientes al servicio `hazelcast` sean las que
 se interroguen para unirse al cluster de replicación de sesiones.
 
+## Ingress
+
+El primer paso es habilitar el addon para ingress, que por defecto viene deshabilitado.
+
+  $ minikube addons enable ingress
+
+Una vez hecho, cambiamos el servicio del front-end para que sea `ClusterIP`, y definimos
+el ingress para que exponga el puerto 8080, y redireccione todas las peticiones al
+dominio definido, `pfw.example.com`, al servicio interno `pfw-front`, también en el
+puerto 8080.
+
+Por último, para poder probar correctamente conviene cambiar el fichero `/etc/hosts`
+para que redireccione a la IP del cluster de minikube:
+
+  $ echo "$(minikube ip) myminikube.info cheeses.all" | sudo tee -a /etc/hosts
+
 # Referencias
 
 * [Installing and using MariaDB via Docker](https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/)
+* [How to use embedded Hazelcast in Kubernetes](https://blog.hazelcast.com/how-to-use-embedded-hazelcast-on-kubernetes/)
+* [Setting up Ingress on Minikube](https://medium.com/@Oskarr3/setting-up-ingress-on-minikube-6ae825e98f82)
