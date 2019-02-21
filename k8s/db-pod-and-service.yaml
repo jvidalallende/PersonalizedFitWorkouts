@@ -9,6 +9,33 @@ spec:
     app: mariadb
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfw-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/sda1/pfw_pv"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pfw-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: mariadb
@@ -32,3 +59,6 @@ spec:
       hostPath:
         path: /home/docker/PersonalizedFitWorkouts/database/initdb.d  # directory location on host
         type: Directory
+    - name: pfw-pv-storage
+      persistentVolumeClaim:
+        claimName: pfw-pv-claim

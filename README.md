@@ -52,6 +52,11 @@ Para verificar la conexión, puede utilizarse un contenedor de mariaDB, usando l
 
   $ kubectl run -it --rm --restart=Never mariadb-exec --image=mariadb:10.0 bash
 
+#### Persistent Volume
+
+El PV utiliza la ruta `/mnt/sda1/pfw_pv`. Minikube cuenta con almacenamiento disponible
+en `/mnt/sda1`, por lo que basta con crear una carpeta vacía en dicha ruta.
+
 ### PDF app
 
 ### PFW app
