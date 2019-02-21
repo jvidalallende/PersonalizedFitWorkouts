@@ -100,6 +100,13 @@ para que redireccione a la IP del cluster de minikube:
 
   $ echo "$(minikube ip) myminikube.info cheeses.all" | sudo tee -a /etc/hosts
 
+## TODO
+
+* Use Helm for deployment
+* Change names and use consistent naming
+* Add labels for applications
+* Improve documentation, including diagrams
+
 # Referencias
 
 * [Installing and using MariaDB via Docker](https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/)
