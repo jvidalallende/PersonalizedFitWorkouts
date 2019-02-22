@@ -16,9 +16,7 @@ como punto de partida el proyecto
 que consta de una aplicación web principal desarrollada con
 [Spring Boot](https://spring.io/projects/spring-boot), un servicio web auxiliar
 que también usa _Spring Boot_, y una base de datos [MySQL](https://www.mysql.com/)
-como componentes principales. Para consultar los detalles de la aplicación base,
-se ha movido la documentación original a la carpeta
-[old_doc](https://github.com/jvidalallende/PersonalizedFitWorkouts/tree/master/old_doc).
+como componentes principales.
 
 # Desarrollo de la migración
 
