@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.db.service_name }}
+spec:
+  ports:
+  - port: {{ .Values.db.port }}
+  selector:
+    app: juanvidal-mariadb
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfw-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.db.host_paths.pv }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pfw-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: juanvidal-mariadb
+  labels:
+    app: juanvidal-mariadb
+spec:
+  containers:
+  - image: mariadb:10.0
+    name: mariadb
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: {{ .Values.db.credentials.root_password }}
+    ports:
+    - containerPort: {{ .Values.db.port }}
+      name: mariadb
+    volumeMounts:
+    - mountPath: /docker-entrypoint-initdb.d
+      name: init-db
+  volumes:
+    - name: init-db
+      hostPath:
+        path: {{ .Values.db.host_paths.initdb }}
+        type: Directory
+    - name: pfw-pv-storage
+      persistentVolumeClaim:
+        claimName: pfw-pv-claim

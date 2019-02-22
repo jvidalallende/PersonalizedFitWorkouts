@@ -1,0 +1,18 @@
+# Default values for pfw.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# DATABASE
+db:
+    service_name: "juanvidal-mariadb"
+    port: 3306
+    database_name: "test"
+    host_paths:
+        pv: "/mnt/sda1/pfw_pv"
+        initdb: "/home/docker/PersonalizedFitWorkouts/database/initdb.d"
+    credentials:
+        root_password: "banana"
+        rw_user: "server"
+        rw_pass: "password"
+        ro_user: "pdfcreator"
+        ro_pass: "pdfcreator-password"

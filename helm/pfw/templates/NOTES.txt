@@ -1,0 +1,1 @@
+Database service [{{ .Values.db.service_name }}] running on port [{{ .Values.db.port }}]

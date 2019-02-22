@@ -1,0 +1,11 @@
+apiVersion: v1
+appVersion: 0.0.1
+description: Chat to deploy PersonalizedFitWorkouts web application
+sources:
+  - https://github.com/jvidalallende/PersonalizedFitWorkouts"
+maintainers: # (optional)
+  - name: Juan Vidal Allende
+    email: juanvidalallende (at) gmail (dot) com
+    url: https://github.com/jvidalallende
+name: pfw
+version: 0.0.1
