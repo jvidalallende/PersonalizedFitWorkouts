@@ -1,70 +1,70 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pfw-front
+  name: juanvidal-pfw-main
 spec:
   type: ClusterIP
   selector:
-    app: pfw-front
+    app: juanvidal-pfw-main
   ports:
-  - name: pfw-front-port
+  - name: web-front-end
     port: 8080
-  - name: hazelcast-port
+  - name: hazelcast
     port: 5701
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: pfw-ingress
+  name: juanvidal-pfw-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: pfw.example.com
+  - host: juanvidal.pfw.example.com
     http:
       paths:
       - path: /
         backend:
-          serviceName: pfw-front
+          serviceName: juanvidal-pfw-main
           servicePort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pfw-front
+  name: juanvidal-pfw-main
 spec:
   selector:
     matchLabels:
-      app: pfw-front
+      app: juanvidal-pfw-main
   replicas: 2
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: pfw-front
+        app: juanvidal-pfw-main
     spec:
       containers:
       - image: juanvidal-pfw-app
         imagePullPolicy: IfNotPresent
-        name: pfw-front
+        name: juanvidal-pfw-main
         env:
         - name: DB_USERNAME
           value: server
         - name: DB_PASSWORD
           value: password
         - name: DB_HOST
-          value: db
+          value: juanvidal-mariadb
         - name: DB_NAME
           value: test
         - name: DB_PORT
           value: "3306"
         - name: PDF_CREATOR_HOST
-          value: pdf-service
+          value: juanvidal-pdfcreator
         - name: PDF_CREATOR_PORT
           value: "8090"
         - name: HAZELCAST_SERVICE_NAME
-          value: pfw-front
+          value: juanvidal-pfw-main
         ports:
         - containerPort: 8080
-          name: pfw-front
+          name: web-front-end
