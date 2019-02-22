@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.pdfcreator.service_name }}
+spec:
+  ports:
+  - port: {{ .Values.pdfcreator.port }}
+  selector:
+    app: juanvidal-pdfcreator
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juanvidal-pdfcreator
+spec:
+  selector:
+    matchLabels:
+      app: juanvidal-pdfcreator
+  replicas: {{ .Values.pdfcreator.replicas }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: juanvidal-pdfcreator
+    spec:
+      containers:
+      - image: juanvidal-pdfcreator
+        imagePullPolicy: IfNotPresent
+        name: pdfcreator
+        env:
+        - name: DB_USERNAME
+          value: {{ .Values.db.credentials.rw_user }}
+        - name: DB_PASSWORD
+          value: {{ .Values.db.credentials.rw_pass }}
+        - name: DB_HOST
+          value: {{ .Values.db.service_name }}
+        - name: DB_PORT
+          value: "{{ .Values.db.port }}"
+        - name: DB_NAME
+          value: {{ .Values.db.database_name }}
+        - name: SERVER_PORT
+          value: "{{ .Values.pdfcreator.port }}"
+        ports:
+        - containerPort: {{ .Values.pdfcreator.port }}
+          name: pdfcreator

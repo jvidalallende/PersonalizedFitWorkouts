@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.pfw_main.service_name }}
+spec:
+  type: ClusterIP
+  selector:
+    app: juanvidal-pfw-main
+  ports:
+  - name: web-front-end
+    port: {{ .Values.pfw_main.port }}
+  - name: hazelcast
+    port: 5701
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juanvidal-pfw-main
+spec:
+  selector:
+    matchLabels:
+      app: juanvidal-pfw-main
+  replicas: {{ .Values.pfw_main.replicas }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: juanvidal-pfw-main
+    spec:
+      containers:
+      - image: juanvidal-pfw-app
+        imagePullPolicy: IfNotPresent
+        name: juanvidal-pfw-main
+        env:
+        - name: DB_USERNAME
+          value: {{ .Values.db.credentials.rw_user }}
+        - name: DB_PASSWORD
+          value: {{ .Values.db.credentials.rw_pass }}
+        - name: DB_HOST
+          value: {{ .Values.db.service_name }}
+        - name: DB_NAME
+          value: {{ .Values.db.database_name }}
+        - name: DB_PORT
+          value: "{{ .Values.db.port }}"
+        - name: PDF_CREATOR_HOST
+          value: {{ .Values.pdfcreator.service_name }}
+        - name: PDF_CREATOR_PORT
+          value: "{{ .Values.pdfcreator.port }}"
+        - name: HAZELCAST_SERVICE_NAME
+          value: {{ .Values.pfw_main.service_name }}
+        ports:
+        - containerPort: {{ .Values.pfw_main.port }}
+          name: web-front-end

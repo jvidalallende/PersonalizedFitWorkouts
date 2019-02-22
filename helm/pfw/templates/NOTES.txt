@@ -1,1 +1,39 @@
-Database service [{{ .Values.db.service_name }}] running on port [{{ .Values.db.port }}]
+###############################################################################
+#                                                                             #
+#         PersonalizedFitWorkouts application is up and running!              #
+#       Please wait a bit for all the services to properly boot up.           #
+#                                                                             #
+###############################################################################
+
+Once all services are running, please configure your local DNS resolver to point
+PersonalizedFitWorkouts URL ({{ .Values.ingress.hostname }}) to the proper Kubernetes IP.
+In minikube, you can use the following command to get the cluster's IP.
+
+  $ echo "$(minikube ip)
+
+If you want to look at the internals of this deployment, here is some relevant information:
+
+ - Ingress
+   * URL: {{ .Values.ingress.hostname }}
+
+ - Main web front-end
+   * Service name: {{ .Values.pfw_main.service_name }}
+   * Port: {{ .Values.pfw_main.port }}
+   * Replicas: {{ .Values.pfw_main.replicas }}
+
+ - PDF creator internal application
+   * Service name: {{ .Values.pdfcreator.service_name }}
+   * Port: {{ .Values.pdfcreator.port }}
+   * Replicas: {{ .Values.pdfcreator.replicas }}
+
+ - Database:
+   * Service name: {{ .Values.db.service_name }}
+   * Port {{ .Values.db.port }}
+
+If the application is not reachable, it could be because of a wrong database initialization.
+The database expects two paths to exist on the host where it is running:
+
+ - An empty folder for persistent volumes, placed in: {{ .Values.db.host_paths.pv }}
+ - A folder for DB initialization (it may contain SQL scripts) at: {{ .Values.db.host_paths.initdb }}
+
+If you experience any other issues, please have a look at the docs at http://github.com/jvidalallende/PersonalizedFitWorkouts

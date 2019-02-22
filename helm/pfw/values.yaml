@@ -16,3 +16,16 @@ db:
         rw_pass: "password"
         ro_user: "pdfcreator"
         ro_pass: "pdfcreator-password"
+
+pdfcreator:
+    service_name: "juanvidal-pdfcreator"
+    port: 8090
+    replicas: 2
+
+pfw_main:
+    service_name: "juanvidal-pfw-main"
+    port: 8080
+    replicas: 2
+
+ingress:
+    hostname: juanvidal.pfw.example.com
