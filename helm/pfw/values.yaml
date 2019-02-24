@@ -15,11 +15,13 @@ db:
         ro_pass: "pdfcreator-password"
 
 pdfcreator:
+    image: "juanvidal-pdfcreator"
     service_name: "juanvidal-pdfcreator"
     port: 8090
     replicas: 2
 
 pfw_main:
+    image: "juanvidal-pfw-main"
     service_name: "juanvidal-pfw-main"
     port: 8080
     replicas: 2

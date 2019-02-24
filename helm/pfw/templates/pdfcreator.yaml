@@ -25,7 +25,7 @@ spec:
         app: juanvidal-pdfcreator
     spec:
       containers:
-      - image: juanvidal-pdfcreator
+      - image: {{ .Values.pdfcreator.image }}
         imagePullPolicy: IfNotPresent
         name: pdfcreator
         env:
