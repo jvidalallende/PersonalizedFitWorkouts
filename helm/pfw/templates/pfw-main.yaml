@@ -29,7 +29,7 @@ spec:
         app: juanvidal-pfw-main
     spec:
       containers:
-      - image: juanvidal-pfw-app
+      - image: juanvidal-pfw-main
         imagePullPolicy: IfNotPresent
         name: juanvidal-pfw-main
         env:
