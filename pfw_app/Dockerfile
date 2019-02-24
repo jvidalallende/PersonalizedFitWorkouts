@@ -9,22 +9,16 @@ RUN mvn clean package -DskipTests
 FROM openjdk:8-jre-alpine
 
 # Environment variables with default values
-# These variables are supposed to be overrun at runtime, otherwise app
-# initialization may not work properly. Added here as documentation.
 ENV SERVER_PORT "8080"
-ENV DB_PORT "3306"
-ENV DB_NAME "test"
-ENV DB_HOST ""
-ENV DB_USERNAME ""
-ENV DB_PASSWORD ""
-ENV PDF_CREATOR_HOST ""
-ENV PDF_CREATOR_PORT ""
 
 # The port in which the app listens should be open
 EXPOSE $SERVER_PORT
 
 COPY --from=builder /usr/src/mymaven/target/personalizedfitworkouts*.jar .
+
 # The application will use environment variables to setup its properties
+# Apart from the following variables, the applicacion also expects two more
+# vars: PDF_CREATOR_HOST and PDF_CREATOR_PORT, in order to connect to PDFcreator
 CMD java -jar personalizedfitworkouts*.jar \
  --spring.datasource.url=jdbc:mysql://$DB_HOST:$DB_PORT/$DB_NAME \
  --spring.datasource.username=$DB_USERNAME \
