@@ -8,5 +8,6 @@ PFW_MAIN="juanvidal-pfw-main"
 PDF_CREATOR="juanvidal-pdfcreator"
 
 eval $(minikube docker-env)
+docker pull mariadb:10.0
 docker build -t ${PFW_MAIN} ${PFW_ROOT}/pfw_main/
 docker build -t ${PDF_CREATOR} ${PFW_ROOT}/pdfcreator/
