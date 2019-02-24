@@ -18,95 +18,74 @@ que consta de una aplicación web principal desarrollada con
 que también usa _Spring Boot_, y una base de datos [MySQL](https://www.mysql.com/)
 como componentes principales.
 
-# Desarrollo de la migración
+# Despliegue
 
-## _Dockerización_ de los componentes
+## Preparación del entorno
 
-El primer paso para que la aplicación se pueda desplegar en [Kubernetes](https://kubernetes.io/)
-consiste en desplegar cada uno de sus servicios en contenedores.
+En primer lugar, deberá empezarse por clonar el repositorio a un directorio de
+trabajo en la máquina de desarrollo:
 
-### Base de datos
-En primer lugar, para la base de datos se ha elegido el contenedor oficial de
-[MariaDB](https://hub.docker.com/_/mariadb), en su versión 10.0.
+    user@dev:~$ git clone https://github.com/jvidalallende/PersonalizedFitWorkouts.git
+    user@dev:~$ cd PersonalizedFitWorkouts
 
-En la base de datos es necesario crear una base de datos y un usuario (con su
-respectiva contraseña) que después serán inyectados a la aplicación principal
-como propiedades. Para hacer esto, al lanzar el contenedor de la base de datos
-basta con montar un volumen con los scripts SQL de inicialización en la ruta
-`/docker-entrypoint-initdb.d`, y estos se ejecutarán al arrancar el contenedor.
+Posteriormente, se arrancará minikube, y se habilitará el plugin para Ingress:
 
-#### Kubernetización
+    user@dev:~/PersonalizedFitWorkouts$ minikube start
+    user@dev:~/PersonalizedFitWorkouts$ minikube addons enable ingress
 
-La base de datos se arranca en su propio POD, con un contenedor en el que se montan
-dos volúmenes: uno para el PV, y otro para el INITDB. Puesto que el volumen de INITDB
-utiliza un fichero que está en el repositorio (y tiene que hacerse accesible desde
-minikube), lo más sencillo es clonar el repositorio en el directorio HOME de minikube
-(`/home/docker`). El spec está preparado para usar esa ruta como base.
+Para que hazelcast-minikube funcione correctamente, es necesario otorgarle
+algunos permisos, descritos en el fichero `k8s/rbac.yaml` del repositorio.
+Pueden aplicarse a Minikube con el siguiente comando:
 
-Para exponer la BBDD al resto del cluster se utiliza un servicio que expone el puerto
-3306, el que usa MariaDB por defecto.
+    user@dev:~/PersonalizedFitWorkouts$ kubectl apply -f k8s/rbac.yaml
 
-Para verificar la conexión, puede utilizarse un contenedor de mariaDB, usando los comandos:
+## Creación de las imágenes de los contenedores
 
-  $ kubectl run -it --rm --restart=Never mariadb-exec --image=mariadb:10.0 bash
+Para simplificar la creación de las imágenes dentro del propio cluster de
+Minikube, se proporciona un script: `build-pfw-images.bash`. Puede lanzarse desde
+la carpeta raiz del proyecto con el siguiente comando:
 
-#### Persistent Volume
+    user@dev:~/PersonalizedFitWorkouts$ ./scripts/build-pfw-images.bash
 
-El PV utiliza la ruta `/mnt/sda1/pfw_pv`. Minikube cuenta con almacenamiento disponible
-en `/mnt/sda1`, por lo que basta con crear una carpeta vacía en dicha ruta.
+## Preparación de la base de datos
 
-### PDF app
+La base de datos espera que existan dos carpetas dentro de la máquina virtual de
+Minikube, una con un fichero SQL para la inicialización de la misma, y otra donde
+montar el volumen persistente. En el repositorio existe un fichero de inicialización
+de la BBDD ya preconfigurado con los mismos valores del fichero `values.yaml`.
+Si se opta por modificar estos valores, tenga en cuenta que la inicialización de
+la BBDD y la configuración del Chart deben estar sincronizadas.
 
-### PFW app
+Para crear los directorios adecuados, ejecute los siguientes comandos:
 
-#### Kubernetización
+    user@dev:~/PersonalizedFitWorkouts$ minikube ssh "sudo mkdir /mnt/sda1/pfw_pv"
+    user@dev:~/PersonalizedFitWorkouts$ minikube ssh "git clone https://github.com/jvidalallende/PersonalizedFitWorkouts.git"
 
-Es necesario pasar todas las variables de entorno, o la app no funciona correctamente.
-Las variables de entorno de construcción no sirven para nada... ¿habría que eliminarlas?
+## Configuración de DNS en el host
 
-De momento probado con una única réplica. ¿cómo gestionar Hazelcast? ¿Un nuevo servicio?
+Puesto que el despliegue usa un nombre de dominio para el Ingress, es necesario
+configurar la máquina de desarrollo para redireccione el tráfico de ese nombre de
+dominio hacia el cluster de Minikube. Para conocer la IP del cluster, puede utilizarse
+este comando:
 
-#### Hazelcast
+    user@dev:~/PersonalizedFitWorkouts$ minikube ip
+    192.168.99.106
 
-La implementación existente de la aplicación hace uso de *Hazelcast* para tener una
-caché distribuida de sesiones. Sin embargo, tiene escrita la IP exacta del nodo
-maestro, lo cual no es válido en un despliegue en Kubernetes.
+Una vez conocida la IP del cluster, habría que modificar el fichero `/etc/hosts`
+de la máquina de desarrollo para que tenga una entrada a esa IP con el nombre de
+dominio apropiado (por defecto *juanvidal.pfw.example.com*).
 
-Para utilizar Hazelcast en Kubernetes, se ha desplegado un nuevo servicio que permite
-comunicarse a las réplicas a través del puerto 5701, y se ha actualizado el pom.xml
-para utilizar *hazelcast-kubernetes* junto con una versión reciente de Hazelcast.
+## Configuración de Helm y despliegue
 
-Haciendo uso de la API de Kubernetes (para lo cual hay que dar permisos mediante
-el fichero de autorización `rbac.yaml`), es posible hacer que las instancias de
-la aplicación se autodescubran. Para mejorar además la configuración, se ha especificado
-que únicamente las instancias pertenecientes al servicio `hazelcast` sean las que
-se interroguen para unirse al cluster de replicación de sesiones.
+Aunque se asume que la instalación de Helm es correcta, se añaden a continuación
+los comandos para realizarla, así como para configurar Tiller en caso de que no
+se haya hecho previamente. Se asume que el cliente de Helm está disponible en la
+máquina de desarrollo.
 
-## Ingress
+    user@dev:~/PersonalizedFitWorkouts$ helm init
+    user@dev:~/PersonalizedFitWorkouts$ kubectl -n kube-system patch deployment tiller-deploy -p'{"spec": {"template": {"spec":  {"automountServiceAccountToken":true}}}}'
+    user@dev:~/PersonalizedFitWorkouts$ kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 
-El primer paso es habilitar el addon para ingress, que por defecto viene deshabilitado.
+Finalmente, llegó el momento de desplegar la aplicación. Para ello, basta con utilizar un comando de helm:
 
-  $ minikube addons enable ingress
-
-Una vez hecho, cambiamos el servicio del front-end para que sea `ClusterIP`, y definimos
-el ingress para que exponga el puerto 8080, y redireccione todas las peticiones al
-dominio definido, `pfw.example.com`, al servicio interno `pfw-front`, también en el
-puerto 8080.
-
-Por último, para poder probar correctamente conviene cambiar el fichero `/etc/hosts`
-para que redireccione a la IP del cluster de minikube:
-
-  $ echo "$(minikube ip) myminikube.info cheeses.all" | sudo tee -a /etc/hosts
-
-## TODO
-
-* Use Helm for deployment
-* Change names and use consistent naming
-* Add labels for applications
-* Improve documentation, including diagrams
-
-# Referencias
-
-* [Installing and using MariaDB via Docker](https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/)
-* [How to use embedded Hazelcast in Kubernetes](https://blog.hazelcast.com/how-to-use-embedded-hazelcast-on-kubernetes/)
-* [Setting up Ingress on Minikube](https://medium.com/@Oskarr3/setting-up-ingress-on-minikube-6ae825e98f82)
+    user@dev:~/PersonalizedFitWorkouts$ helm install --name juanvidal-pfw helm/pfw/
